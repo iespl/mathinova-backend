@@ -627,4 +627,274 @@ export class AdminService {
 
         return { success: true };
     }
+
+    /**
+     * Deep clones a module including all nested lessons, videos, quizzes, and pyqs.
+     */
+    static async cloneModule(adminId: string, moduleId: string, targetCourseId: string) {
+        return prisma.$transaction(async (tx) => {
+            const sourceModule = await tx.module.findUnique({
+                where: { id: moduleId },
+                include: {
+                    lessons: {
+                        include: {
+                            videos: true,
+                            quiz: {
+                                include: {
+                                    questions: {
+                                        include: { options: true }
+                                    }
+                                }
+                            },
+                            pyqs: {
+                                include: { occurrences: true }
+                            }
+                        }
+                    }
+                }
+            });
+
+            if (!sourceModule) throw new Error('Source module not found');
+
+            // 1. Create the new module
+            const newModule = await tx.module.create({
+                data: {
+                    courseId: targetCourseId,
+                    title: `${sourceModule.title} (Copy)`,
+                    order: sourceModule.order + 1 // Simplified reordering
+                }
+            });
+
+            // 2. Clone each lesson
+            for (const lesson of sourceModule.lessons) {
+                const newLesson = await tx.lesson.create({
+                    data: {
+                        moduleId: newModule.id,
+                        title: lesson.title,
+                        order: lesson.order,
+                        completionRule: lesson.completionRule,
+                        isWrapper: lesson.isWrapper
+                    }
+                });
+
+                // Clone Videos
+                if (lesson.videos.length > 0) {
+                    await tx.video.createMany({
+                        data: lesson.videos.map(v => ({
+                            lessonId: newLesson.id,
+                            videoUrl: v.videoUrl,
+                            duration: v.duration,
+                            title: v.title,
+                            isSample: v.isSample,
+                            order: v.order
+                        }))
+                    });
+                }
+
+                // Clone Quiz
+                if (lesson.quiz) {
+                    const newQuiz = await tx.quiz.create({
+                        data: {
+                            lessonId: newLesson.id,
+                            title: lesson.quiz.title,
+                            description: lesson.quiz.description,
+                            isPublished: lesson.quiz.isPublished
+                        }
+                    });
+
+                    for (const question of lesson.quiz.questions) {
+                        const newQuestion = await tx.question.create({
+                            data: {
+                                quizId: newQuiz.id,
+                                type: question.type,
+                                prompt: question.prompt,
+                                order: question.order,
+                                numericValue: question.numericValue,
+                                tolerance: question.tolerance
+                            }
+                        });
+
+                        if (question.options.length > 0) {
+                            await tx.mCQOption.createMany({
+                                data: question.options.map(o => ({
+                                    questionId: newQuestion.id,
+                                    text: o.text,
+                                    isCorrect: o.isCorrect
+                                }))
+                            });
+                        }
+                    }
+                }
+
+                // Clone PYQs
+                for (const pyq of lesson.pyqs) {
+                    const newPyq = await tx.pYQ.create({
+                        data: {
+                            lessonId: newLesson.id,
+                            questionType: pyq.questionType,
+                            questionText: pyq.questionText,
+                            questionImages: pyq.questionImages || [],
+                            answerImages: pyq.answerImages || [],
+                            solutionVideoUrl: pyq.solutionVideoUrl,
+                            difficulty: pyq.difficulty,
+                            order: pyq.order,
+                            isSimilar: pyq.isSimilar,
+                            isPublished: pyq.isPublished,
+                            description: pyq.description,
+                            answerText: pyq.answerText
+                        }
+                    });
+
+                    if (pyq.occurrences.length > 0) {
+                        await tx.pYQOccurrence.createMany({
+                            data: pyq.occurrences.map(o => ({
+                                pyqId: newPyq.id,
+                                year: o.year,
+                                month: o.month,
+                                courseCode: o.courseCode,
+                                part: o.part
+                            }))
+                        });
+                    }
+                }
+            }
+
+            await AuditService.logAction({
+                actorUserId: adminId,
+                action: 'CLONE_MODULE',
+                entityType: 'Module',
+                entityId: newModule.id,
+                afterState: { sourceModuleId: moduleId, targetCourseId }
+            });
+
+            return newModule;
+        });
+    }
+
+    /**
+     * Deep clones a lesson including all nested videos, quizzes, and pyqs.
+     */
+    static async cloneLesson(adminId: string, lessonId: string, targetModuleId: string) {
+        return prisma.$transaction(async (tx) => {
+            const lesson = await tx.lesson.findUnique({
+                where: { id: lessonId },
+                include: {
+                    videos: true,
+                    quiz: {
+                        include: {
+                            questions: {
+                                include: { options: true }
+                            }
+                        }
+                    },
+                    pyqs: {
+                        include: { occurrences: true }
+                    }
+                }
+            });
+
+            if (!lesson) throw new Error('Source lesson not found');
+
+            const newLesson = await tx.lesson.create({
+                data: {
+                    moduleId: targetModuleId,
+                    title: `${lesson.title} (Copy)`,
+                    order: lesson.order + 1,
+                    completionRule: lesson.completionRule,
+                    isWrapper: lesson.isWrapper
+                }
+            });
+
+            // Clone Videos
+            if (lesson.videos.length > 0) {
+                await tx.video.createMany({
+                    data: lesson.videos.map(v => ({
+                        lessonId: newLesson.id,
+                        videoUrl: v.videoUrl,
+                        duration: v.duration,
+                        title: v.title,
+                        isSample: v.isSample,
+                        order: v.order
+                    }))
+                });
+            }
+
+            // Clone Quiz
+            if (lesson.quiz) {
+                const newQuiz = await tx.quiz.create({
+                    data: {
+                        lessonId: newLesson.id,
+                        title: lesson.quiz.title,
+                        description: lesson.quiz.description,
+                        isPublished: lesson.quiz.isPublished
+                    }
+                });
+
+                for (const question of lesson.quiz.questions) {
+                    const newQuestion = await tx.question.create({
+                        data: {
+                            quizId: newQuiz.id,
+                            type: question.type,
+                            prompt: question.prompt,
+                            order: question.order,
+                            numericValue: question.numericValue,
+                            tolerance: question.tolerance
+                        }
+                    });
+
+                    if (question.options.length > 0) {
+                        await tx.mCQOption.createMany({
+                            data: question.options.map(o => ({
+                                questionId: newQuestion.id,
+                                text: o.text,
+                                isCorrect: o.isCorrect
+                            }))
+                        });
+                    }
+                }
+            }
+
+            // Clone PYQs
+            for (const pyq of lesson.pyqs) {
+                const newPyq = await tx.pYQ.create({
+                    data: {
+                        lessonId: newLesson.id,
+                        questionType: pyq.questionType,
+                        questionText: pyq.questionText,
+                        questionImages: pyq.questionImages || [],
+                        answerImages: pyq.answerImages || [],
+                        solutionVideoUrl: pyq.solutionVideoUrl,
+                        difficulty: pyq.difficulty,
+                        order: pyq.order,
+                        isSimilar: pyq.isSimilar,
+                        isPublished: pyq.isPublished,
+                        description: pyq.description,
+                        answerText: pyq.answerText
+                    }
+                });
+
+                if (pyq.occurrences.length > 0) {
+                    await tx.pYQOccurrence.createMany({
+                        data: pyq.occurrences.map(o => ({
+                            pyqId: newPyq.id,
+                            year: o.year,
+                            month: o.month,
+                            courseCode: o.courseCode,
+                            part: o.part
+                        }))
+                    });
+                }
+            }
+
+            await AuditService.logAction({
+                actorUserId: adminId,
+                action: 'CLONE_LESSON',
+                entityType: 'Lesson',
+                entityId: newLesson.id,
+                afterState: { sourceLessonId: lessonId, targetModuleId }
+            });
+
+            return newLesson;
+        });
+    }
 }

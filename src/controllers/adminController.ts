@@ -298,4 +298,30 @@ export class AdminController {
             res.status(400).json({ message: error.message });
         }
     }
+
+    static async cloneModule(req: Request, res: Response) {
+        try {
+            const adminId = (req as AuthRequest).user!.id;
+            const id = req.params.id as string; // source moduleId
+            const { targetCourseId } = req.body;
+            if (!targetCourseId) return res.status(400).json({ message: 'targetCourseId is required' });
+            const module = await AdminService.cloneModule(adminId, id, targetCourseId);
+            res.status(201).json(module);
+        } catch (error: any) {
+            res.status(400).json({ message: error.message });
+        }
+    }
+
+    static async cloneLesson(req: Request, res: Response) {
+        try {
+            const adminId = (req as AuthRequest).user!.id;
+            const id = req.params.id as string; // source lessonId
+            const { targetModuleId } = req.body;
+            if (!targetModuleId) return res.status(400).json({ message: 'targetModuleId is required' });
+            const lesson = await AdminService.cloneLesson(adminId, id, targetModuleId);
+            res.status(201).json(lesson);
+        } catch (error: any) {
+            res.status(400).json({ message: error.message });
+        }
+    }
 }

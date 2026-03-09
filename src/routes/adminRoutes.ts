@@ -27,8 +27,10 @@ router.post('/courses/:id/modules', AdminController.addModule);
 router.patch('/modules/:id', AdminController.updateModule);
 router.delete('/modules/:id', AdminController.deleteModule);
 router.post('/modules/:id/lessons', AdminController.addLesson);
+router.post('/modules/:id/clone', AdminController.cloneModule);
 router.patch('/lessons/:id', AdminController.updateLesson);
 router.delete('/lessons/:id', AdminController.deleteLesson);
+router.post('/lessons/:id/clone', AdminController.cloneLesson);
 router.put('/lessons/:id/content', AdminController.updateLessonContent);
 
 // Reordering
