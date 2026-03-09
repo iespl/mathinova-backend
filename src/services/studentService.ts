@@ -98,7 +98,7 @@ export class StudentService {
                             where: { isDeleted: false },
                             orderBy: { order: 'asc' },
                             include: {
-                                videos: true,
+                                videos: { orderBy: { order: 'asc' } },
                                 resources: true,
                                 quiz: {
                                     include: {
@@ -108,7 +108,8 @@ export class StudentService {
                                     }
                                 },
                                 pyqs: {
-                                    include: { occurrences: true }
+                                    include: { occurrences: true },
+                                    orderBy: { order: 'asc' }
                                 }
                             }
                         }
@@ -299,7 +300,7 @@ export class StudentService {
 
         return prisma.pYQ.findMany({
             where: { lessonId, isPublished: true },
-            orderBy: [{ createdAt: 'asc' }],
+            orderBy: [{ order: 'asc' }],
             include: { occurrences: true }
         });
     }

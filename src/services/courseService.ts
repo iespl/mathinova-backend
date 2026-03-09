@@ -15,13 +15,20 @@ export class CourseService {
     }
 
     static async getCourses(status?: EntityStatus) {
-        return prisma.course.findMany({
+        const courses = await prisma.course.findMany({
             where: status ? { status } : {},
             include: {
                 _count: {
                     select: { modules: true }
                 }
             }
+        });
+
+        // Priortize specific course
+        return courses.sort((a, b) => {
+            if (a.slug === 'advanced-structural-dynamics') return -1;
+            if (b.slug === 'advanced-structural-dynamics') return 1;
+            return 0;
         });
     }
 
@@ -31,13 +38,15 @@ export class CourseService {
             relationLoadStrategy: 'join', // Added to reduce round-trips
             include: {
                 modules: {
+                    orderBy: { order: 'asc' },
                     include: {
                         lessons: {
                             where: { isDeleted: false },
+                            orderBy: { order: 'asc' },
                             include: {
-                                videos: true,
+                                videos: { orderBy: { order: 'asc' } },
                                 quiz: true,
-                                pyqs: true
+                                pyqs: { orderBy: { order: 'asc' } }
                             }
                         }
                     }
@@ -83,11 +92,14 @@ export class CourseService {
             relationLoadStrategy: 'join',
             include: {
                 modules: {
+                    orderBy: { order: 'asc' },
                     include: {
                         lessons: {
                             where: { isDeleted: false },
+                            orderBy: { order: 'asc' },
                             include: {
                                 videos: {
+                                    orderBy: { order: 'asc' },
                                     select: {
                                         id: true,
                                         title: true,
@@ -102,6 +114,7 @@ export class CourseService {
                                     }
                                 },
                                 pyqs: {
+                                    orderBy: { order: 'asc' },
                                     select: {
                                         id: true
                                     }
@@ -159,13 +172,15 @@ export class CourseService {
             relationLoadStrategy: 'join', // Added to reduce round-trips
             include: {
                 modules: {
+                    orderBy: { order: 'asc' },
                     include: {
                         lessons: {
                             where: { isDeleted: false },
+                            orderBy: { order: 'asc' },
                             include: {
-                                videos: true,
+                                videos: { orderBy: { order: 'asc' } },
                                 quiz: true,
-                                pyqs: true
+                                pyqs: { orderBy: { order: 'asc' } }
                             }
                         }
                     }

@@ -102,7 +102,7 @@ model Module {
   title    String
   order    Int
   lessons  Lesson[]
-  course   Course   @relation(fields: [courseId], references: [id], onDelete: Restrict)
+  course   Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
 
   @@index([courseId])
 }
@@ -117,7 +117,7 @@ model Lesson {
   updatedAt      DateTime   @updatedAt
   isWrapper      Boolean    @default(false)
   completionRule String     @default("video+quiz")
-  module         Module     @relation(fields: [moduleId], references: [id], onDelete: Restrict)
+  module         Module     @relation(fields: [moduleId], references: [id], onDelete: Cascade)
 
   @@index([moduleId])
   pyqs           PYQ[]
@@ -135,7 +135,7 @@ model Video {
   title    String  @default("Untitled Video")
   isSample Boolean @default(false)
   order    Int     @default(0)
-  lesson   Lesson  @relation(fields: [lessonId], references: [id], onDelete: Restrict)
+  lesson   Lesson  @relation(fields: [lessonId], references: [id], onDelete: Cascade)
 
   @@index([lessonId])
 }
@@ -234,7 +234,7 @@ model Quiz {
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
   questions   Question[]
-  lesson      Lesson        @relation(fields: [lessonId], references: [id], onDelete: Restrict)
+  lesson      Lesson        @relation(fields: [lessonId], references: [id], onDelete: Cascade)
   attempts    QuizAttempt[]
 }
 
@@ -247,7 +247,7 @@ model Question {
   numericValue Float?
   tolerance    Float?            @default(0.01)
   options      MCQOption[]
-  quiz         Quiz              @relation(fields: [quizId], references: [id], onDelete: Restrict)
+  quiz         Quiz              @relation(fields: [quizId], references: [id], onDelete: Cascade)
   attempts     QuestionAttempt[]
 
   @@index([quizId])
@@ -258,7 +258,7 @@ model MCQOption {
   questionId String
   text       String
   isCorrect  Boolean  @default(false)
-  question   Question @relation(fields: [questionId], references: [id], onDelete: Restrict)
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
 
   @@index([questionId])
 }
@@ -300,7 +300,7 @@ model PYQ {
   description      String?
   createdAt        DateTime        @default(now())
   answerText       String?
-  lesson           Lesson          @relation(fields: [lessonId], references: [id], onDelete: Restrict)
+  lesson           Lesson          @relation(fields: [lessonId], references: [id], onDelete: Cascade)
   occurrences      PYQOccurrence[]
   views            PYQView[]
 
@@ -314,7 +314,7 @@ model PYQOccurrence {
   month      String
   courseCode String
   part       String? @default("Part-A")
-  pyq        PYQ     @relation(fields: [pyqId], references: [id], onDelete: Restrict)
+  pyq        PYQ     @relation(fields: [pyqId], references: [id], onDelete: Cascade)
 
   @@index([pyqId])
 }

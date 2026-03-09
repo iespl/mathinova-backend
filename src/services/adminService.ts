@@ -203,11 +203,12 @@ export class AdminService {
                     include: {
                         lessons: {
                             include: {
-                                videos: true,
+                                videos: { orderBy: { order: 'asc' } },
                                 pyqs: {
                                     include: {
                                         occurrences: true
-                                    }
+                                    },
+                                    orderBy: { order: 'asc' }
                                 },
                                 quiz: {
                                     include: {
