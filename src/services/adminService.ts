@@ -198,6 +198,7 @@ export class AdminService {
     static async getCourseById(courseId: string) {
         return prisma.course.findUnique({
             where: { id: courseId },
+            relationLoadStrategy: 'join',
             include: {
                 modules: {
                     include: {
@@ -446,8 +447,6 @@ export class AdminService {
     static async updateLessonContent(lessonId: string, videos?: any[], pyqs?: any[], quiz?: any) {
         return prisma.$transaction(async (tx) => {
             // 1. Update Videos
-
-            // Better: Handle each video.
             if (videos) {
                 await tx.video.deleteMany({ where: { lessonId } });
                 if (videos.length > 0) {
@@ -468,7 +467,7 @@ export class AdminService {
             if (pyqs) {
                 await tx.pYQ.deleteMany({ where: { lessonId } });
                 for (const p of pyqs) {
-                    const pyqResult = await tx.pYQ.create({
+                    await tx.pYQ.create({
                         data: {
                             lessonId,
                             questionType: p.questionType || 'text',
@@ -479,21 +478,17 @@ export class AdminService {
                             solutionVideoUrl: p.solutionVideoUrl,
                             difficulty: p.difficulty || 'Medium',
                             order: p.order || 0,
-                            description: p.description
+                            description: p.description,
+                            occurrences: {
+                                create: (p.occurrences || []).map((o: any) => ({
+                                    year: parseInt(o.year) || 0,
+                                    month: o.month || '',
+                                    courseCode: o.courseCode || '',
+                                    part: o.part || 'Part-A'
+                                }))
+                            }
                         }
                     });
-
-                    if (p.occurrences && p.occurrences.length > 0) {
-                        await tx.pYQOccurrence.createMany({
-                            data: p.occurrences.map((o: any) => ({
-                                pyqId: pyqResult.id,
-                                year: parseInt(o.year) || 0,
-                                month: o.month || '',
-                                courseCode: o.courseCode || '',
-                                part: o.part || 'Part-A'
-                            }))
-                        });
-                    }
                 }
             }
 
@@ -549,20 +544,27 @@ export class AdminService {
 
             return tx.lesson.findUnique({
                 where: { id: lessonId },
+                relationLoadStrategy: 'join',
                 include: {
-                    videos: true,
-                    pyqs: true,
+                    videos: { orderBy: { order: 'asc' } },
+                    pyqs: {
+                        include: { occurrences: true },
+                        orderBy: { order: 'asc' }
+                    },
                     quiz: {
                         include: {
                             questions: {
                                 include: {
                                     options: true
-                                }
+                                },
+                                orderBy: { order: 'asc' }
                             }
                         }
                     }
                 }
             });
+        }, {
+            timeout: 60000
         });
     }
 

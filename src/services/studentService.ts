@@ -90,6 +90,7 @@ export class StudentService {
         // 3. Fetch Full Content (including videos, quiz, pyqs)
         return prisma.course.findUnique({
             where: { id: resolvedCourseId },
+            relationLoadStrategy: 'join',
             include: {
                 modules: {
                     orderBy: { order: 'asc' },
