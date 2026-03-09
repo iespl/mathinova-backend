@@ -1,0 +1,54 @@
+﻿[
+  {
+    "errorGroups": [
+      {
+        "id": "CIL3xuOZvJvk6wE"
+      }
+    ],
+    "insertId": "699ed84100011e6473970b14",
+    "labels": {
+      "instanceId": "00da6cd2c4c2e16186e6db62b73ca450e24dafb1d052d0a849c2c4dcd5fc1a4934f9fd3bfa1133a1c8ceee910258d4c417a7f6260d3e126511ccd2049bebe3fcca024f3521b7cc5b8393a4ae9d6a"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-02-25T11:08:49.411676103Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00016-lmd",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "ERROR",
+    "textPayload": "ValidationError: The 'Forwarded' header (standardized X-Forwarded-For) is set but currently being ignored. Add a custom keyGenerator to use a value from this header. See https://express-rate-limit.github.io/ERR_ERL_FORWARDED_HEADER/ for more information.\n    at Object.forwardedHeader (file:///usr/src/app/node_modules/express-rate-limit/dist/index.mjs:352:13)\n    at wrappedValidations.<computed> [as forwardedHeader] (file:///usr/src/app/node_modules/express-rate-limit/dist/index.mjs:651:22)\n    at Object.keyGenerator (file:///usr/src/app/node_modules/express-rate-limit/dist/index.mjs:755:20)\n    at file:///usr/src/app/node_modules/express-rate-limit/dist/index.mjs:815:32\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///usr/src/app/node_modules/express-rate-limit/dist/index.mjs:796:5 {",
+    "timestamp": "2026-02-25T11:08:49.073316Z"
+  },
+  {
+    "errorGroups": [
+      {
+        "id": "CIL3xuOZvJvk6wE"
+      }
+    ],
+    "insertId": "699ed84100011cd8608a4e66",
+    "labels": {
+      "instanceId": "00da6cd2c4c2e16186e6db62b73ca450e24dafb1d052d0a849c2c4dcd5fc1a4934f9fd3bfa1133a1c8ceee910258d4c417a7f6260d3e126511ccd2049bebe3fcca024f3521b7cc5b8393a4ae9d6a"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-02-25T11:08:49.079990653Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00016-lmd",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "ERROR",
+    "textPayload": "ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.\n    at Object.xForwardedForHeader (file:///usr/src/app/node_modules/express-rate-limit/dist/index.mjs:337:13)\n    at wrappedValidations.<computed> [as xForwardedForHeader] (file:///usr/src/app/node_modules/express-rate-limit/dist/index.mjs:651:22)\n    at Object.keyGenerator (file:///usr/src/app/node_modules/express-rate-limit/dist/index.mjs:754:20)\n    at file:///usr/src/app/node_modules/express-rate-limit/dist/index.mjs:815:32\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///usr/src/app/node_modules/express-rate-limit/dist/index.mjs:796:5 {",
+    "timestamp": "2026-02-25T11:08:49.072920Z"
+  }
+]

@@ -1,0 +1,1 @@
+http://localhost:5173/verify-email?token=7b345be14ea234d1505094195a3d04532f134971b3fd8d53a1f42b8ed207fab2

@@ -1,0 +1,1011 @@
+﻿[
+  {
+    "insertId": "69a806df0009745af97e3e75",
+    "labels": {
+      "instanceId": "00da6cd2c4aae7951a119e18112032e83be8dff768ad2b3c5e0877093dbe8828e41560340bf69f1527ad1d6be7ad8f8c80a94dc92c35142ef703f9db91833f0036505a2eda88d06006937b958a4442"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-04T10:18:07.899440307Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00035-sbv",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[server]: Mathinova Backend running at http://localhost:8080",
+    "timestamp": "2026-03-04T10:18:07.619610Z"
+  },
+  {
+    "insertId": "69a806df000973c160ae6571",
+    "labels": {
+      "instanceId": "00da6cd2c4aae7951a119e18112032e83be8dff768ad2b3c5e0877093dbe8828e41560340bf69f1527ad1d6be7ad8f8c80a94dc92c35142ef703f9db91833f0036505a2eda88d06006937b958a4442"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2026-03-04T10:18:07.802227061Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00035-sbv",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "textPayload": "Default STARTUP TCP probe succeeded after 1 attempt for container \"mathinova-backend-1\" on port 8080.",
+    "timestamp": "2026-03-04T10:18:07.619457Z"
+  },
+  {
+    "insertId": "69a806df0009556c8d3c7c0e",
+    "labels": {
+      "instanceId": "00da6cd2c4aae7951a119e18112032e83be8dff768ad2b3c5e0877093dbe8828e41560340bf69f1527ad1d6be7ad8f8c80a94dc92c35142ef703f9db91833f0036505a2eda88d06006937b958a4442"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-04T10:18:07.899440307Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00035-sbv",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[dotenv@17.2.3] injecting env (0) from .env -- tip: ? add secrets lifecycle management: https://dotenvx.com/ops",
+    "timestamp": "2026-03-04T10:18:07.611692Z"
+  },
+  {
+    "insertId": "69a806de00089349504ef4e0",
+    "labels": {
+      "instanceId": "00da6cd2c4aae7951a119e18112032e83be8dff768ad2b3c5e0877093dbe8828e41560340bf69f1527ad1d6be7ad8f8c80a94dc92c35142ef703f9db91833f0036505a2eda88d06006937b958a4442"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-04T10:18:06.566679767Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00035-sbv",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "> node dist/server.js",
+    "timestamp": "2026-03-04T10:18:06.561993Z"
+  },
+  {
+    "insertId": "69a806de0008932dad292b04",
+    "labels": {
+      "instanceId": "00da6cd2c4aae7951a119e18112032e83be8dff768ad2b3c5e0877093dbe8828e41560340bf69f1527ad1d6be7ad8f8c80a94dc92c35142ef703f9db91833f0036505a2eda88d06006937b958a4442"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-04T10:18:06.566679767Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00035-sbv",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "> mathinova-platform-backend@1.0.0 start",
+    "timestamp": "2026-03-04T10:18:06.561965Z"
+  },
+  {
+    "insertId": "69a806dd0006f8bea5a3fd97",
+    "labels": {
+      "instanceId": "00da6cd2c4aae7951a119e18112032e83be8dff768ad2b3c5e0877093dbe8828e41560340bf69f1527ad1d6be7ad8f8c80a94dc92c35142ef703f9db91833f0036505a2eda88d06006937b958a4442",
+      "scaling_reason": "DEPLOYMENT_ROLLOUT"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2026-03-04T10:18:05.463233146Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00035-sbv",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "textPayload": "Starting new instance. Reason: DEPLOYMENT_ROLLOUT - Instance started due to traffic shifting between revisions due to deployment, traffic split adjustment, or deployment health check.",
+    "timestamp": "2026-03-04T10:18:05.456894Z"
+  },
+  {
+    "insertId": "69a80050000178e156f6c937",
+    "labels": {
+      "instanceId": "00da6cd2c4e09f33cc731c30ef2f2411c797fea6262ef93194ecdeedec74928299ce25a18792c8370157e8b25ab1509e10348a359dad786fba6f3b1a231e1c661eeb7a018844c7df7c137c3ee668fe"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-04T09:50:08.126809486Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00034-cjz",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[server]: Mathinova Backend running at http://localhost:8080",
+    "timestamp": "2026-03-04T09:50:08.096481Z"
+  },
+  {
+    "insertId": "69a8005000016fb975539a55",
+    "labels": {
+      "instanceId": "00da6cd2c4e09f33cc731c30ef2f2411c797fea6262ef93194ecdeedec74928299ce25a18792c8370157e8b25ab1509e10348a359dad786fba6f3b1a231e1c661eeb7a018844c7df7c137c3ee668fe"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2026-03-04T09:50:08.162485089Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00034-cjz",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "textPayload": "Default STARTUP TCP probe succeeded after 1 attempt for container \"mathinova-backend-1\" on port 8080.",
+    "timestamp": "2026-03-04T09:50:08.094137Z"
+  },
+  {
+    "insertId": "69a8005000014388931701c9",
+    "labels": {
+      "instanceId": "00da6cd2c4e09f33cc731c30ef2f2411c797fea6262ef93194ecdeedec74928299ce25a18792c8370157e8b25ab1509e10348a359dad786fba6f3b1a231e1c661eeb7a018844c7df7c137c3ee668fe"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-04T09:50:08.126809486Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00034-cjz",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[dotenv@17.2.3] injecting env (0) from .env -- tip: ??  specify custom .env file path with { path: '/custom/path/.env' }",
+    "timestamp": "2026-03-04T09:50:08.082824Z"
+  },
+  {
+    "insertId": "69a8004f0001de27e7709a71",
+    "labels": {
+      "instanceId": "00da6cd2c4e09f33cc731c30ef2f2411c797fea6262ef93194ecdeedec74928299ce25a18792c8370157e8b25ab1509e10348a359dad786fba6f3b1a231e1c661eeb7a018844c7df7c137c3ee668fe"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-04T09:50:07.129239592Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00034-cjz",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "> node dist/server.js",
+    "timestamp": "2026-03-04T09:50:07.122407Z"
+  },
+  {
+    "insertId": "69a8004f0001de0a84032c22",
+    "labels": {
+      "instanceId": "00da6cd2c4e09f33cc731c30ef2f2411c797fea6262ef93194ecdeedec74928299ce25a18792c8370157e8b25ab1509e10348a359dad786fba6f3b1a231e1c661eeb7a018844c7df7c137c3ee668fe"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-04T09:50:07.129239592Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00034-cjz",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "> mathinova-platform-backend@1.0.0 start",
+    "timestamp": "2026-03-04T09:50:07.122378Z"
+  },
+  {
+    "insertId": "69a8004e00026b1d70b67c1d",
+    "labels": {
+      "instanceId": "00da6cd2c4e09f33cc731c30ef2f2411c797fea6262ef93194ecdeedec74928299ce25a18792c8370157e8b25ab1509e10348a359dad786fba6f3b1a231e1c661eeb7a018844c7df7c137c3ee668fe",
+      "scaling_reason": "MANUAL_OR_CUSTOMER_MIN_INSTANCE"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2026-03-04T09:50:06.164580676Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00034-cjz",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "textPayload": "Starting new instance. Reason: MANUAL_OR_CUSTOMER_MIN_INSTANCE - Instance started because of customer-configured min-instances or manual scaling.",
+    "timestamp": "2026-03-04T09:50:06.158493Z"
+  },
+  {
+    "insertId": "69a7f7a800057a98250644e6",
+    "labels": {
+      "instanceId": "00da6cd2c4dbac7023de4c032990f85ad0dffbb10fbd981d26dbecf282802b346210bbb18ffe6f7129a07e08d72addde1f5c2365a2a736dc3320bc77a9b2bdc0229d63dbec67b19801c625e3184f05"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-04T09:13:12.577044646Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00033-x9m",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[server]: Mathinova Backend running at http://localhost:8080",
+    "timestamp": "2026-03-04T09:13:12.359064Z"
+  },
+  {
+    "insertId": "69a7f7a80005777faf4980cb",
+    "labels": {
+      "instanceId": "00da6cd2c4dbac7023de4c032990f85ad0dffbb10fbd981d26dbecf282802b346210bbb18ffe6f7129a07e08d72addde1f5c2365a2a736dc3320bc77a9b2bdc0229d63dbec67b19801c625e3184f05"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2026-03-04T09:13:12.519018205Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00033-x9m",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "textPayload": "Default STARTUP TCP probe succeeded after 1 attempt for container \"mathinova-backend-1\" on port 8080.",
+    "timestamp": "2026-03-04T09:13:12.358271Z"
+  },
+  {
+    "insertId": "69a7f7a800055e545f6dcdb4",
+    "labels": {
+      "instanceId": "00da6cd2c4dbac7023de4c032990f85ad0dffbb10fbd981d26dbecf282802b346210bbb18ffe6f7129a07e08d72addde1f5c2365a2a736dc3320bc77a9b2bdc0229d63dbec67b19801c625e3184f05"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-04T09:13:12.577044646Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00033-x9m",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[dotenv@17.2.3] injecting env (0) from .env -- tip: ??  write to custom object with { processEnv: myObject }",
+    "timestamp": "2026-03-04T09:13:12.351828Z"
+  },
+  {
+    "insertId": "69a7f7a70003af3e49afeadc",
+    "labels": {
+      "instanceId": "00da6cd2c4dbac7023de4c032990f85ad0dffbb10fbd981d26dbecf282802b346210bbb18ffe6f7129a07e08d72addde1f5c2365a2a736dc3320bc77a9b2bdc0229d63dbec67b19801c625e3184f05"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-04T09:13:11.246864569Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00033-x9m",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "> node dist/server.js",
+    "timestamp": "2026-03-04T09:13:11.241470Z"
+  },
+  {
+    "insertId": "69a7f7a70003af2b40dd4754",
+    "labels": {
+      "instanceId": "00da6cd2c4dbac7023de4c032990f85ad0dffbb10fbd981d26dbecf282802b346210bbb18ffe6f7129a07e08d72addde1f5c2365a2a736dc3320bc77a9b2bdc0229d63dbec67b19801c625e3184f05"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-04T09:13:11.246864569Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00033-x9m",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "> mathinova-platform-backend@1.0.0 start",
+    "timestamp": "2026-03-04T09:13:11.241451Z"
+  },
+  {
+    "insertId": "69a7f7a5000cef3d916bb56f",
+    "labels": {
+      "instanceId": "00da6cd2c4dbac7023de4c032990f85ad0dffbb10fbd981d26dbecf282802b346210bbb18ffe6f7129a07e08d72addde1f5c2365a2a736dc3320bc77a9b2bdc0229d63dbec67b19801c625e3184f05",
+      "scaling_reason": "DEPLOYMENT_ROLLOUT"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2026-03-04T09:13:09.853706939Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00033-x9m",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "textPayload": "Starting new instance. Reason: DEPLOYMENT_ROLLOUT - Instance started due to traffic shifting between revisions due to deployment, traffic split adjustment, or deployment health check.",
+    "timestamp": "2026-03-04T09:13:09.847677Z"
+  },
+  {
+    "insertId": "69a7f64d00036ff3605b38e1",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "}",
+    "timestamp": "2026-03-04T09:07:25.225267Z"
+  },
+  {
+    "insertId": "69a7f64d00036ff1a07ccb05",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "  clientVersion: '6.2.1'",
+    "timestamp": "2026-03-04T09:07:25.225265Z"
+  },
+  {
+    "insertId": "69a7f64d00036fef99c7feea",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    at async updateCourse (file:///usr/src/app/dist/controllers/adminController.js:76:28) {",
+    "timestamp": "2026-03-04T09:07:25.225263Z"
+  },
+  {
+    "insertId": "69a7f64d00036fed64856618",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    at async AdminService.updateCourse (file:///usr/src/app/dist/services/adminService.js:141:27)",
+    "timestamp": "2026-03-04T09:07:25.225261Z"
+  },
+  {
+    "insertId": "69a7f64d00036feb7f94820a",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    at async l (/usr/src/app/node_modules/@prisma/client/runtime/library.js:130:9617)",
+    "timestamp": "2026-03-04T09:07:25.225259Z"
+  },
+  {
+    "insertId": "69a7f64d00036fe86a529bbb",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    at Vn.request (/usr/src/app/node_modules/@prisma/client/runtime/library.js:121:6370)",
+    "timestamp": "2026-03-04T09:07:25.225256Z"
+  },
+  {
+    "insertId": "69a7f64d00036fe637fbc082",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    at Vn.handleAndLogRequestError (/usr/src/app/node_modules/@prisma/client/runtime/library.js:121:6663)",
+    "timestamp": "2026-03-04T09:07:25.225254Z"
+  },
+  {
+    "insertId": "69a7f64d00036fe28791bf7b",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    at Vn.handleRequestError (/usr/src/app/node_modules/@prisma/client/runtime/library.js:121:6982)",
+    "timestamp": "2026-03-04T09:07:25.225250Z"
+  },
+  {
+    "insertId": "69a7f64d00036fdbc7262165",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    at wn (/usr/src/app/node_modules/@prisma/client/runtime/library.js:29:1363)",
+    "timestamp": "2026-03-04T09:07:25.225243Z"
+  },
+  {
+    "insertId": "69a7f64d00036fd95ab59621",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "Unknown argument `learningPoints`. Available options are marked with ?.",
+    "timestamp": "2026-03-04T09:07:25.225241Z"
+  },
+  {
+    "insertId": "69a7f64d00036fd68b144443",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "}",
+    "timestamp": "2026-03-04T09:07:25.225238Z"
+  },
+  {
+    "insertId": "69a7f64d00036fd3fc8e55eb",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "  }",
+    "timestamp": "2026-03-04T09:07:25.225235Z"
+  },
+  {
+    "insertId": "69a7f64d00036fd14d8b424f",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "?   progress?: ProgressUpdateManyWithoutCourseNestedInput",
+    "timestamp": "2026-03-04T09:07:25.225233Z"
+  },
+  {
+    "insertId": "69a7f64d00036fcfb9af5b6c",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "?   orders?: OrderUpdateManyWithoutCourseNestedInput,",
+    "timestamp": "2026-03-04T09:07:25.225231Z"
+  },
+  {
+    "insertId": "69a7f64d00036fcb900a66f3",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "?   modules?: ModuleUpdateManyWithoutCourseNestedInput,",
+    "timestamp": "2026-03-04T09:07:25.225227Z"
+  },
+  {
+    "insertId": "69a7f64d00036fc96b1dfe8c",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "?   enrollments?: EnrollmentUpdateManyWithoutCourseNestedInput,",
+    "timestamp": "2026-03-04T09:07:25.225225Z"
+  },
+  {
+    "insertId": "69a7f64d00036fc76ee186d7",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "?   courseCode?: String | NullableStringFieldUpdateOperationsInput | Null,",
+    "timestamp": "2026-03-04T09:07:25.225223Z"
+  },
+  {
+    "insertId": "69a7f64d00036fc4d729bf15",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "?   pricingType?: PricingType | EnumPricingTypeFieldUpdateOperationsInput,",
+    "timestamp": "2026-03-04T09:07:25.225220Z"
+  },
+  {
+    "insertId": "69a7f64d00036fc1c043f59a",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "?   createdAt?: DateTime | DateTimeFieldUpdateOperationsInput,",
+    "timestamp": "2026-03-04T09:07:25.225217Z"
+  },
+  {
+    "insertId": "69a7f64d00036fbd96a03c9d",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "?   currency?: String | StringFieldUpdateOperationsInput,",
+    "timestamp": "2026-03-04T09:07:25.225213Z"
+  },
+  {
+    "insertId": "69a7f64d00036fbafec03c1c",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "?   slug?: String | StringFieldUpdateOperationsInput,",
+    "timestamp": "2026-03-04T09:07:25.225210Z"
+  },
+  {
+    "insertId": "69a7f64d00036fb7f96363e1",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "?   id?: String | StringFieldUpdateOperationsInput,",
+    "timestamp": "2026-03-04T09:07:25.225207Z"
+  },
+  {
+    "insertId": "69a7f64d00036fb3b66f92cd",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    ~~~~~~~~~~~~~~",
+    "timestamp": "2026-03-04T09:07:25.225203Z"
+  },
+  {
+    "insertId": "69a7f64d00036fb1b4c8c0e1",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    learningPoints: [],",
+    "timestamp": "2026-03-04T09:07:25.225201Z"
+  },
+  {
+    "insertId": "69a7f64d00036fadb6118642",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    branch: \"Mechanical Engineering\",",
+    "timestamp": "2026-03-04T09:07:25.225197Z"
+  },
+  {
+    "insertId": "69a7f64d00036faa7a9fada8",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    promoVideoUrl: \"\",",
+    "timestamp": "2026-03-04T09:07:25.225194Z"
+  },
+  {
+    "insertId": "69a7f64d00036fa60091a4d6",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    thumbnail: \"https://mathinova23.b-cdn.net/new%20thumbnails/BMATE301-NEW.webp\",",
+    "timestamp": "2026-03-04T09:07:25.225190Z"
+  },
+  {
+    "insertId": "69a7f64d00036fa2efdb8827",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    longDescription: \"\",",
+    "timestamp": "2026-03-04T09:07:25.225186Z"
+  },
+  {
+    "insertId": "69a7f64d00036f9f13aca546",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    status: \"published\",",
+    "timestamp": "2026-03-04T09:07:25.225183Z"
+  },
+  {
+    "insertId": "69a7f64d00036f9b21e1eec6",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    level: \"Professional\",",
+    "timestamp": "2026-03-04T09:07:25.225179Z"
+  },
+  {
+    "insertId": "69a7f64d00036f9887a036ad",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.565603120Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    category: \"Engineering\",",
+    "timestamp": "2026-03-04T09:07:25.225176Z"
+  },
+  {
+    "insertId": "69a7f64d00036f951e0ce566",
+    "labels": {
+      "instanceId": "00da6cd2c4b7e19f913bc217546b0a32fb28341a015c4a5d96f83b3747f85d78a09cd8b999b870ef71e3f75956d6e2980327436a18ebec1a9cd07f6f174b40868f14b757ec9f600c2a85711db00243"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-04T09:07:25.230889705Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00032-ct2",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    subjectType: \"Engineering Mathematics\",",
+    "timestamp": "2026-03-04T09:07:25.225173Z"
+  }
+]

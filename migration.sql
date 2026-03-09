@@ -1,0 +1,1 @@
+ALTER TABLE "Course" ADD COLUMN "validityDays" INTEGER DEFAULT 180;

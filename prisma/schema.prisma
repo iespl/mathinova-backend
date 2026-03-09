@@ -1,0 +1,399 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["relationJoins"]
+  binaryTargets   = ["native", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id            String        @id @default(uuid())
+  name          String
+  email         String        @unique
+  passwordHash  String
+  role          Role          @default(student)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  isActive      Boolean       @default(true)
+  emailVerified Boolean       @default(false)
+  performedLogs AuditLog[]
+  enrollments   Enrollment[]
+  orders        Order[]
+  pyqViews      PYQView[]
+  progress      Progress[]
+  quizAttempts  QuizAttempt[]
+  verificationTokens VerificationToken[]
+  passwordResets    PasswordReset[]
+  blogs             Blog[]
+}
+
+model Blog {
+  id          String       @id @default(uuid())
+  title       String
+  slug        String       @unique
+  content     String
+  excerpt     String?
+  thumbnail   String?
+  authorId    String
+  author      User         @relation(fields: [authorId], references: [id])
+  status      EntityStatus @default(draft)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  publishedAt DateTime?
+  category    String?
+  tags        String[]
+  videoUrl    String?
+
+  @@index([authorId])
+  @@index([status])
+}
+
+model VerificationToken {
+  id        String   @id @default(uuid())
+  userId    String
+  tokenHash String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model PasswordReset {
+  id        String   @id @default(uuid())
+  userId    String
+  tokenHash String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Course {
+  id              String       @id @default(uuid())
+  title           String
+  slug            String       @unique
+  description     String
+  basePrice       Decimal
+  currency        String       @default("INR")
+  status          EntityStatus @default(draft)
+  createdAt       DateTime     @default(now())
+  category        String       @default("Engineering")
+  level           String       @default("Professional")
+  thumbnail       String?
+  pricingType     PricingType  @default(paid)
+  promoVideoUrl   String?
+  validityDays    Int?
+  branch          String?
+  subjectType     String?      @default("Engineering Mathematics")
+  courseCode      String?      @unique
+  longDescription String?
+  learningPoints  String[]
+  enrollments     Enrollment[]
+  modules         Module[]
+  orders          Order[]
+  progress        Progress[]
+}
+
+model Module {
+  id       String   @id @default(uuid())
+  courseId String
+  title    String
+  order    Int
+  lessons  Lesson[]
+  course   Course   @relation(fields: [courseId], references: [id], onDelete: Restrict)
+
+  @@index([courseId])
+}
+
+model Lesson {
+  id             String     @id @default(uuid())
+  moduleId       String
+  title          String
+  order          Int
+  version        Int        @default(1)
+  isDeleted      Boolean    @default(false)
+  updatedAt      DateTime   @updatedAt
+  isWrapper      Boolean    @default(false)
+  completionRule String     @default("video+quiz")
+  module         Module     @relation(fields: [moduleId], references: [id], onDelete: Restrict)
+
+  @@index([moduleId])
+  pyqs           PYQ[]
+  progress       Progress[]
+  quiz           Quiz?
+  resources      Resource[]
+  videos         Video[]
+}
+
+model Video {
+  id       String  @id @default(uuid())
+  lessonId String
+  videoUrl String
+  duration Int
+  title    String  @default("Untitled Video")
+  isSample Boolean @default(false)
+  order    Int     @default(0)
+  lesson   Lesson  @relation(fields: [lessonId], references: [id], onDelete: Restrict)
+
+  @@index([lessonId])
+}
+
+model Resource {
+  id       String @id @default(uuid())
+  lessonId String
+  fileUrl  String
+  type     String
+  lesson   Lesson @relation(fields: [lessonId], references: [id], onDelete: Restrict)
+}
+
+model Coupon {
+  id           String   @id @default(uuid())
+  code         String   @unique
+  discountType String
+  value        Decimal
+  expiryDate   DateTime
+  usageLimit   Int
+  usedCount    Int      @default(0)
+  active       Boolean  @default(true)
+  orders       Order[]
+}
+
+model Order {
+  id         String      @id @default(uuid())
+  userId     String?
+  email      String
+  tempUserId String?
+  subtotal   Decimal
+  discount   Decimal     @default(0)
+  tax        Decimal     @default(0)
+  total      Decimal
+  currency   String      @default("INR")
+  couponId   String?
+  courseId   String
+  status     OrderStatus @default(pending)
+  createdAt  DateTime    @default(now())
+  coupon     Coupon?     @relation(fields: [couponId], references: [id], onDelete: SetNull)
+  course     Course      @relation(fields: [courseId], references: [id], onDelete: Restrict)
+  user       User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
+  payments   Payment[]
+
+  @@index([tempUserId])
+}
+
+model Payment {
+  id               String        @id @default(uuid())
+  orderId          String
+  gatewayReference String        @unique
+  amount           Decimal
+  method           String
+  status           PaymentStatus @default(initiated)
+  createdAt        DateTime      @default(now())
+  order            Order         @relation(fields: [orderId], references: [id], onDelete: Restrict)
+}
+
+model Enrollment {
+  id               String           @id @default(uuid())
+  userId           String
+  courseId         String
+  status           EnrollmentStatus @default(inactive)
+  activatedAt      DateTime?
+  expiresAt        DateTime?
+  enrollmentSource String           @default("paid")
+  course           Course           @relation(fields: [courseId], references: [id], onDelete: Restrict)
+  user             User             @relation(fields: [userId], references: [id], onDelete: Restrict)
+
+  @@unique([userId, courseId])
+}
+
+model Progress {
+  id                  String  @id @default(uuid())
+  userId              String
+  courseId            String
+  lessonId            String
+  completed           Boolean @default(false)
+  lastWatchedPosition Int     @default(0)
+  videoProgress       Json?   @default("{}")
+  course              Course  @relation(fields: [courseId], references: [id], onDelete: Restrict)
+  lesson              Lesson  @relation(fields: [lessonId], references: [id], onDelete: Restrict)
+  user                User    @relation(fields: [userId], references: [id], onDelete: Restrict)
+
+  @@unique([userId, lessonId])
+  @@index([userId])
+  @@index([lessonId])
+  @@index([courseId])
+}
+
+model Quiz {
+  id          String        @id @default(uuid())
+  lessonId    String        @unique
+  title       String
+  description String?
+  isPublished Boolean       @default(true)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  questions   Question[]
+  lesson      Lesson        @relation(fields: [lessonId], references: [id], onDelete: Restrict)
+  attempts    QuizAttempt[]
+}
+
+model Question {
+  id           String            @id @default(uuid())
+  quizId       String
+  type         String            @default("mcq_single")
+  prompt       String
+  order        Int               @default(0)
+  numericValue Float?
+  tolerance    Float?            @default(0.01)
+  options      MCQOption[]
+  quiz         Quiz              @relation(fields: [quizId], references: [id], onDelete: Restrict)
+  attempts     QuestionAttempt[]
+
+  @@index([quizId])
+}
+
+model MCQOption {
+  id         String   @id @default(uuid())
+  questionId String
+  text       String
+  isCorrect  Boolean  @default(false)
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Restrict)
+
+  @@index([questionId])
+}
+
+model QuizAttempt {
+  id          String            @id @default(uuid())
+  userId      String
+  quizId      String
+  startedAt   DateTime          @default(now())
+  submittedAt DateTime?
+  score       Float?
+  answers     QuestionAttempt[]
+  quiz        Quiz              @relation(fields: [quizId], references: [id], onDelete: Restrict)
+  user        User              @relation(fields: [userId], references: [id], onDelete: Restrict)
+}
+
+model QuestionAttempt {
+  id              String      @id @default(uuid())
+  quizAttemptId   String
+  questionId      String
+  selectedOptions Json?
+  numericAnswer   Float?
+  question        Question    @relation(fields: [questionId], references: [id], onDelete: Restrict)
+  quizAttempt     QuizAttempt @relation(fields: [quizAttemptId], references: [id], onDelete: Restrict)
+}
+
+model PYQ {
+  id               String          @id @default(uuid())
+  lessonId         String
+  questionType     String          @default("text")
+  questionText     String?
+  questionImages   Json?           @default("[]")
+  answerImages     Json?           @default("[]")
+  solutionVideoUrl String?
+  difficulty       String?         @default("Medium")
+  order            Int             @default(0)
+  isSimilar        Boolean         @default(false)
+  isPublished      Boolean         @default(true)
+  description      String?
+  createdAt        DateTime        @default(now())
+  answerText       String?
+  lesson           Lesson          @relation(fields: [lessonId], references: [id], onDelete: Restrict)
+  occurrences      PYQOccurrence[]
+  views            PYQView[]
+
+  @@index([lessonId])
+}
+
+model PYQOccurrence {
+  id         String  @id @default(uuid())
+  pyqId      String
+  year       Int
+  month      String
+  courseCode String
+  part       String? @default("Part-A")
+  pyq        PYQ     @relation(fields: [pyqId], references: [id], onDelete: Restrict)
+
+  @@index([pyqId])
+}
+
+model PYQView {
+  id       String   @id @default(uuid())
+  userId   String
+  pyqId    String
+  viewedAt DateTime @default(now())
+  pyq      PYQ      @relation(fields: [pyqId], references: [id], onDelete: Restrict)
+  user     User     @relation(fields: [userId], references: [id], onDelete: Restrict)
+
+  @@index([pyqId])
+  @@index([userId])
+}
+
+model AuditLog {
+  id          String   @id @default(uuid())
+  actorUserId String
+  action      String
+  entityType  String
+  entityId    String
+  beforeState Json?
+  afterState  Json?
+  createdAt   DateTime @default(now())
+  actor       User     @relation(fields: [actorUserId], references: [id], onDelete: Restrict)
+
+  @@index([actorUserId])
+  @@index([entityId])
+}
+
+model ContentIngestionLog {
+  id              String   @id @default(uuid())
+  manifestVersion String
+  status          String
+  executedAt      DateTime @default(now())
+  details         Json?
+}
+
+model Branch {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Role {
+  student
+  admin
+  super_admin
+}
+
+enum EntityStatus {
+  draft
+  published
+}
+
+enum OrderStatus {
+  pending
+  paid
+  failed
+  refunded
+}
+
+enum PricingType {
+  paid
+  free
+}
+
+enum PaymentStatus {
+  initiated
+  success
+  failed
+  refunded
+}
+
+enum EnrollmentStatus {
+  active
+  inactive
+  expired
+  refunded
+}
