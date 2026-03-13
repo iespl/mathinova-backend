@@ -1,0 +1,162 @@
+﻿{
+  "id": "533694f6-1f9f-4d24-b265-daaf1399910c",
+  "title": "Advanced Structural Dynamics",
+  "slug": "advanced-structural-dynamics",
+  "description": "Comprehensive course on structural behavior under dynamic loads. Master SDOF and MDOF systems, earthquake engineering basics, and vibration analysis.",
+  "basePrice": "0",
+  "currency": "INR",
+  "status": "published",
+  "category": "Engineering",
+  "level": "Professional",
+  "thumbnail": "https://mathinova23.b-cdn.net/new%20thumbnails/BMATE301-NEW.webp",
+  "pricingType": "free",
+  "promoVideoUrl": "https://www.youtube.com/embed/SqzgFRY75kg",
+  "createdAt": "2026-02-04T06:16:56.923Z",
+  "modules": [
+    {
+      "id": "module-uuid-1",
+      "courseId": "533694f6-1f9f-4d24-b265-daaf1399910c",
+      "title": "Module 1: Fundamentals",
+      "order": 1,
+      "lessons": [
+        {
+          "id": "lesson-uuid-1",
+          "moduleId": "module-uuid-1",
+          "title": "Introduction to Dynamics",
+          "order": 1,
+          "version": 1,
+          "isDeleted": false,
+          "updatedAt": "2026-02-05T07:28:11.842Z",
+          "isWrapper": false,
+          "completionRule": "video+quiz",
+          "videos": [
+            {
+              "id": "video-uuid-3",
+              "lessonId": "lesson-uuid-1",
+              "title": "Visualizing linear transformation",
+              "videoUrl": "https://vz-f8a1efcc-689.b-cdn.net/04ab18fa-de4b-421d-a4fa-95190af8ffaf/playlist.m3u8",
+              "duration": 600,
+              "isSample": false
+            },
+            {
+              "id": "video-uuid-1",
+              "lessonId": "lesson-uuid-1",
+              "title": "Rotation as a linear transformation",
+              "videoUrl": "https://www.youtube.com/embed/SqzgFRY75kg",
+              "duration": 600,
+              "isSample": true
+            },
+            {
+              "id": "video-uuid-2",
+              "lessonId": "lesson-uuid-1",
+              "title": "Introduction & Subspaces (Sample)",
+              "videoUrl": "https://vz-f8a1efcc-689.b-cdn.net/cdbfb4a3-93cd-457f-9e4d-17ebd0895482/playlist.m3u8",
+              "duration": 600,
+              "isSample": true
+            }
+          ],
+          "quiz": {
+            "id": "quiz-uuid-1",
+            "lessonId": "lesson-uuid-1",
+            "title": "Fundamentals of Dynamics Quiz",
+            "description": "Test your basic understanding of linear transformations and dynamics.",
+            "isPublished": true,
+            "createdAt": "2026-02-05T07:17:41.480Z",
+            "updatedAt": "2026-02-05T07:28:13.885Z"
+          },
+          "pyqs": [
+            {
+              "id": "pyq-uuid-1",
+              "lessonId": "lesson-uuid-1",
+              "questionType": "mixed",
+              "questionText": "Evaluate the response for the given system.",
+              "questionImages": [
+                "https://mathinova23.b-cdn.net/pyqs/q1.png"
+              ],
+              "answerImages": [
+                "https://mathinova23.b-cdn.net/pyqs/a1.png",
+                "https://mathinova23.b-cdn.net/pyqs/a1_page2.png"
+              ],
+              "solutionVideoUrl": "https://vz-f8a1efcc-689.b-cdn.net/sol1/playlist.m3u8",
+              "difficulty": "Part-B",
+              "order": 1,
+              "isSimilar": false,
+              "isPublished": true,
+              "description": "Common university exam problem.",
+              "createdAt": "2026-02-05T07:17:44.812Z"
+            }
+          ]
+        },
+        {
+          "id": "lesson-uuid-2",
+          "moduleId": "module-uuid-1",
+          "title": "Understanding the Idea of vectors space and subspace",
+          "order": 2,
+          "version": 1,
+          "isDeleted": false,
+          "updatedAt": "2026-02-05T07:28:18.453Z",
+          "isWrapper": false,
+          "completionRule": "video+quiz",
+          "videos": [
+            {
+              "id": "video-uuid-4",
+              "lessonId": "lesson-uuid-2",
+              "title": "Vectors and Subspaces Explained",
+              "videoUrl": "https://vz-f8a1efcc-689.b-cdn.net/cdbfb4a3-93cd-457f-9e4d-17ebd0895482/playlist.m3u8",
+              "duration": 600,
+              "isSample": false
+            },
+            {
+              "id": "video-uuid-5",
+              "lessonId": "lesson-uuid-2",
+              "title": "Inner product & orthogonality",
+              "videoUrl": "https://vz-f8a1efcc-689.b-cdn.net/64f99289-99a1-4ba4-8e0d-a1981c626c79/playlist.m3u8",
+              "duration": 600,
+              "isSample": false
+            }
+          ],
+          "quiz": null,
+          "pyqs": []
+        }
+      ]
+    },
+    {
+      "id": "mod-dyn-basics",
+      "courseId": "533694f6-1f9f-4d24-b265-daaf1399910c",
+      "title": "Module 1: Fundamentals of Dynamics",
+      "order": 1,
+      "lessons": []
+    },
+    {
+      "id": "module-uuid-2",
+      "courseId": "533694f6-1f9f-4d24-b265-daaf1399910c",
+      "title": "Module 2: Wrapper Example (No Lessons)",
+      "order": 2,
+      "lessons": [
+        {
+          "id": "f1b48890-62a3-4fcc-a90b-7ebb2ca4e053",
+          "moduleId": "module-uuid-2",
+          "title": "Module 2: Wrapper Example (No Lessons)",
+          "order": 9999,
+          "version": 1,
+          "isDeleted": false,
+          "updatedAt": "2026-02-05T07:28:20.475Z",
+          "isWrapper": true,
+          "completionRule": "video_only",
+          "videos": [
+            {
+              "id": "video-uuid-wrapper-example",
+              "lessonId": "f1b48890-62a3-4fcc-a90b-7ebb2ca4e053",
+              "title": "Wrapper Video Title",
+              "videoUrl": "https://vz-8da96503-e2d.b-cdn.net/b5cac221-9679-47f3-9cd8-f2dd7d6edfc7/playlist.m3u8",
+              "duration": 300,
+              "isSample": false
+            }
+          ],
+          "quiz": null,
+          "pyqs": []
+        }
+      ]
+    }
+  ]
+}

@@ -175,6 +175,7 @@ export class AdminController {
             const result = await AdminService.updateLessonContent(id, videos, pyqs, quiz);
             res.json(result);
         } catch (error: any) {
+            console.error('[updateLessonContent] ERROR:', error);
             res.status(400).json({ message: error.message });
         }
     }
@@ -185,6 +186,37 @@ export class AdminController {
             const id = req.params.id as string; // lessonId
             await AdminService.deleteLesson(adminId, id);
             res.json({ message: 'Lesson deleted successfully' });
+        } catch (error: any) {
+            res.status(400).json({ message: error.message });
+        }
+    }
+
+    // --- PYQ Operations ---
+    static async createPYQ(req: Request, res: Response) {
+        try {
+            const lessonId = req.params.lessonId as string;
+            const pyq = await AdminService.createPYQ(lessonId, req.body);
+            res.status(201).json(pyq);
+        } catch (error: any) {
+            res.status(400).json({ message: error.message });
+        }
+    }
+
+    static async updatePYQ(req: Request, res: Response) {
+        try {
+            const pyqId = req.params.id as string;
+            const pyq = await AdminService.updatePYQ(pyqId, req.body);
+            res.json(pyq);
+        } catch (error: any) {
+            res.status(400).json({ message: error.message });
+        }
+    }
+
+    static async deletePYQ(req: Request, res: Response) {
+        try {
+            const pyqId = req.params.id as string;
+            await AdminService.deletePYQ(pyqId);
+            res.json({ message: 'PYQ deleted successfully' });
         } catch (error: any) {
             res.status(400).json({ message: error.message });
         }
@@ -294,32 +326,6 @@ export class AdminController {
             const id = req.params.id as string;
             await AdminService.deleteBranch(adminId, id);
             res.json({ message: 'Branch deleted successfully' });
-        } catch (error: any) {
-            res.status(400).json({ message: error.message });
-        }
-    }
-
-    static async cloneModule(req: Request, res: Response) {
-        try {
-            const adminId = (req as AuthRequest).user!.id;
-            const id = req.params.id as string; // source moduleId
-            const { targetCourseId } = req.body;
-            if (!targetCourseId) return res.status(400).json({ message: 'targetCourseId is required' });
-            const module = await AdminService.cloneModule(adminId, id, targetCourseId);
-            res.status(201).json(module);
-        } catch (error: any) {
-            res.status(400).json({ message: error.message });
-        }
-    }
-
-    static async cloneLesson(req: Request, res: Response) {
-        try {
-            const adminId = (req as AuthRequest).user!.id;
-            const id = req.params.id as string; // source lessonId
-            const { targetModuleId } = req.body;
-            if (!targetModuleId) return res.status(400).json({ message: 'targetModuleId is required' });
-            const lesson = await AdminService.cloneLesson(adminId, id, targetModuleId);
-            res.status(201).json(lesson);
         } catch (error: any) {
             res.status(400).json({ message: error.message });
         }

@@ -15,20 +15,13 @@ export class CourseService {
     }
 
     static async getCourses(status?: EntityStatus) {
-        const courses = await prisma.course.findMany({
+        return prisma.course.findMany({
             where: status ? { status } : {},
             include: {
                 _count: {
                     select: { modules: true }
                 }
             }
-        });
-
-        // Priortize specific course
-        return courses.sort((a, b) => {
-            if (a.slug === 'advanced-structural-dynamics') return -1;
-            if (b.slug === 'advanced-structural-dynamics') return 1;
-            return 0;
         });
     }
 
@@ -38,15 +31,13 @@ export class CourseService {
             relationLoadStrategy: 'join', // Added to reduce round-trips
             include: {
                 modules: {
-                    orderBy: { order: 'asc' },
                     include: {
                         lessons: {
                             where: { isDeleted: false },
-                            orderBy: { order: 'asc' },
                             include: {
-                                videos: { orderBy: { order: 'asc' } },
+                                videos: true,
                                 quiz: true,
-                                pyqs: { orderBy: { order: 'asc' } }
+                                pyqs: true
                             }
                         }
                     }
@@ -83,41 +74,32 @@ export class CourseService {
         };
     }
 
-    // Public endpoint - returns only sample videos with query-level filtering
+    // Public endpoint
     static async getPublicCourse(slugOrId: string) {
         const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(slugOrId);
 
-        const course = await prisma.course.findUnique({
-            where: isUuid ? { id: slugOrId } : { slug: slugOrId },
+        const course = await prisma.course.findFirst({
+            where: isUuid 
+                ? { id: slugOrId, status: EntityStatus.published } 
+                : { slug: slugOrId, status: EntityStatus.published },
             relationLoadStrategy: 'join',
             include: {
                 modules: {
-                    orderBy: { order: 'asc' },
                     include: {
                         lessons: {
                             where: { isDeleted: false },
-                            orderBy: { order: 'asc' },
                             include: {
-                                videos: {
-                                    orderBy: { order: 'asc' },
-                                    select: {
-                                        id: true,
-                                        title: true,
-                                        duration: true,
-                                        isSample: true,
-                                        videoUrl: true
-                                    }
-                                },
+                                videos: true,
                                 quiz: {
                                     select: {
                                         id: true
                                     }
                                 },
                                 pyqs: {
-                                    orderBy: { order: 'asc' },
-                                    select: {
-                                        id: true
-                                    }
+                                    include: {
+                                        occurrences: true
+                                    },
+                                    orderBy: { order: 'asc' }
                                 }
                             }
                         }
@@ -128,18 +110,7 @@ export class CourseService {
 
         if (!course) return null;
 
-        // Mask video URLs for non-sample videos
-        course.modules.forEach(mod => {
-            mod.lessons.forEach(lesson => {
-                lesson.videos.forEach((vid: any) => {
-                    if (!vid.isSample) {
-                        vid.videoUrl = null;
-                    }
-                });
-            });
-        });
-
-        // Calculate counts (same as getCourseBySlug)
+        // Calculate counts
         let totalLessons = 0;
         let totalVideos = 0;
         let totalQuizzes = 0;
@@ -156,6 +127,24 @@ export class CourseService {
 
         return {
             ...course,
+            modules: course.modules.map(mod => ({
+                ...mod,
+                lessons: mod.lessons.map(lesson => ({
+                    ...lesson,
+                    videos: lesson.videos.map(v => ({
+                        ...v,
+                        videoUrl: v.isSample ? v.videoUrl : null
+                    })),
+                    pyqs: lesson.pyqs.map(p => ({
+                        ...p,
+                        questionText: p.isSample ? p.questionText : null,
+                        questionImages: p.isSample ? p.questionImages : [],
+                        answerImages: p.isSample ? p.answerImages : [],
+                        solutionVideoUrl: p.isSample ? p.solutionVideoUrl : null,
+                        answerText: p.isSample ? p.answerText : null
+                    }))
+                }))
+            })),
             _counts: {
                 modules: course.modules.length,
                 lessons: totalLessons,
@@ -172,15 +161,13 @@ export class CourseService {
             relationLoadStrategy: 'join', // Added to reduce round-trips
             include: {
                 modules: {
-                    orderBy: { order: 'asc' },
                     include: {
                         lessons: {
                             where: { isDeleted: false },
-                            orderBy: { order: 'asc' },
                             include: {
-                                videos: { orderBy: { order: 'asc' } },
+                                videos: true,
                                 quiz: true,
-                                pyqs: { orderBy: { order: 'asc' } }
+                                pyqs: true
                             }
                         }
                     }

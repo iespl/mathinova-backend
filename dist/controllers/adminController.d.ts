@@ -1,0 +1,28 @@
+import { Request, Response } from 'express';
+export declare class AdminController {
+    static processRefund(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;
+    static getAllOrders(req: Request, res: Response): Promise<void>;
+    static getUsers(req: Request, res: Response): Promise<void>;
+    static toggleUserStatus(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;
+    static listCourses(req: Request, res: Response): Promise<void>;
+    static createCourse(req: Request, res: Response): Promise<void>;
+    static updateCourse(req: Request, res: Response): Promise<void>;
+    static deleteCourse(req: Request, res: Response): Promise<void>;
+    static getCourse(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;
+    static addModule(req: Request, res: Response): Promise<void>;
+    static updateModule(req: Request, res: Response): Promise<void>;
+    static deleteModule(req: Request, res: Response): Promise<void>;
+    static addLesson(req: Request, res: Response): Promise<void>;
+    static updateLesson(req: Request, res: Response): Promise<void>;
+    static updateLessonContent(req: Request, res: Response): Promise<void>;
+    static deleteLesson(req: Request, res: Response): Promise<void>;
+    static reorderModules(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;
+    static reorderLessons(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;
+    static reorderVideos(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;
+    static reorderPYQs(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;
+    static reorderQuizQuestions(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;
+    static listBranches(req: Request, res: Response): Promise<void>;
+    static createBranch(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;
+    static updateBranch(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;
+    static deleteBranch(req: Request, res: Response): Promise<void>;
+}

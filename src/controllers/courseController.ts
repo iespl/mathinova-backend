@@ -6,8 +6,8 @@ import cache from '../utils/cache.js';
 export class CourseController {
     static async getAllCourses(req: Request, res: Response) {
         try {
-            const status = req.query.status as EntityStatus | undefined;
-            const courses = await CourseService.getCourses(status);
+            // Public listing should strictly only include published courses
+            const courses = await CourseService.getCourses(EntityStatus.published);
             res.json(courses);
         } catch (error: any) {
             res.status(500).json({ message: error.message });
@@ -80,7 +80,7 @@ export class CourseController {
                         isWrapper: lesson.isWrapper,
                         videos: lesson.videos, // Already filtered to sample videos only
                         quiz: !!lesson.quiz,
-                        pyqs: lesson.pyqs.length > 0
+                        pyqs: lesson.pyqs // Pass the full array (content already masked for non-sample PYQs)
                     }))
                 }))
             };

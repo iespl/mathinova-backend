@@ -21,4 +21,44 @@ export class AuthController {
             res.status(401).json({ message: error.message });
         }
     }
+
+    static async verifyEmail(req: Request, res: Response) {
+        try {
+            const { token } = req.body;
+            const result = await AuthService.verifyEmail(token);
+            res.json(result);
+        } catch (error: any) {
+            res.status(400).json({ message: error.message });
+        }
+    }
+
+    static async resendVerification(req: Request, res: Response) {
+        try {
+            const { email } = req.body;
+            const result = await AuthService.resendVerification(email);
+            res.json(result);
+        } catch (error: any) {
+            res.status(400).json({ message: error.message });
+        }
+    }
+
+    static async forgotPassword(req: Request, res: Response) {
+        try {
+            const { email } = req.body;
+            const result = await AuthService.forgotPassword(email);
+            res.json(result);
+        } catch (error: any) {
+            res.status(400).json({ message: error.message });
+        }
+    }
+
+    static async resetPassword(req: Request, res: Response) {
+        try {
+            const { token, newPassword } = req.body;
+            const result = await AuthService.resetPassword(token, newPassword);
+            res.json(result);
+        } catch (error: any) {
+            res.status(400).json({ message: error.message });
+        }
+    }
 }
