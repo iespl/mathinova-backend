@@ -106,7 +106,7 @@ export declare class AdminService {
         subjectType: string | null;
         courseCode: string | null;
         longDescription: string | null;
-        learningPoints: import("@prisma/client/runtime/library").JsonValue | null;
+        learningPoints: string[];
     })[]>;
     static createCourse(adminId: string, data: any): Promise<{
         id: string;
@@ -127,7 +127,7 @@ export declare class AdminService {
         subjectType: string | null;
         courseCode: string | null;
         longDescription: string | null;
-        learningPoints: import("@prisma/client/runtime/library").JsonValue | null;
+        learningPoints: string[];
     }>;
     static updateCourse(adminId: string, courseId: string, data: any): Promise<{
         id: string;
@@ -148,7 +148,7 @@ export declare class AdminService {
         subjectType: string | null;
         courseCode: string | null;
         longDescription: string | null;
-        learningPoints: import("@prisma/client/runtime/library").JsonValue | null;
+        learningPoints: string[];
     }>;
     static deleteCourse(adminId: string, courseId: string): Promise<{
         success: boolean;
@@ -156,66 +156,13 @@ export declare class AdminService {
     static getCourseById(courseId: string): Promise<({
         modules: ({
             lessons: ({
-                videos: {
+                _count: {
+                    videos: number;
+                    pyqs: number;
+                };
+                quiz: {
                     id: string;
-                    title: string;
-                    order: number;
-                    lessonId: string;
-                    videoUrl: string;
-                    duration: number;
-                    isSample: boolean;
-                }[];
-                quiz: ({
-                    questions: ({
-                        options: {
-                            id: string;
-                            questionId: string;
-                            text: string;
-                            isCorrect: boolean;
-                        }[];
-                    } & {
-                        id: string;
-                        order: number;
-                        quizId: string;
-                        type: string;
-                        prompt: string;
-                        numericValue: number | null;
-                        tolerance: number | null;
-                    })[];
-                } & {
-                    id: string;
-                    title: string;
-                    description: string | null;
-                    createdAt: Date;
-                    updatedAt: Date;
-                    lessonId: string;
-                    isPublished: boolean;
-                }) | null;
-                pyqs: ({
-                    occurrences: {
-                        id: string;
-                        courseCode: string;
-                        year: number;
-                        pyqId: string;
-                        month: string;
-                        part: string | null;
-                    }[];
-                } & {
-                    id: string;
-                    description: string | null;
-                    createdAt: Date;
-                    order: number;
-                    lessonId: string;
-                    isPublished: boolean;
-                    questionType: string;
-                    questionText: string | null;
-                    questionImages: import("@prisma/client/runtime/library").JsonValue | null;
-                    answerImages: import("@prisma/client/runtime/library").JsonValue | null;
-                    solutionVideoUrl: string | null;
-                    difficulty: string | null;
-                    isSimilar: boolean;
-                    answerText: string | null;
-                })[];
+                } | null;
             } & {
                 id: string;
                 title: string;
@@ -223,9 +170,9 @@ export declare class AdminService {
                 updatedAt: Date;
                 order: number;
                 isDeleted: boolean;
+                moduleId: string;
                 isWrapper: boolean;
                 completionRule: string;
-                moduleId: string;
             })[];
         } & {
             id: string;
@@ -252,126 +199,30 @@ export declare class AdminService {
         subjectType: string | null;
         courseCode: string | null;
         longDescription: string | null;
-        learningPoints: import("@prisma/client/runtime/library").JsonValue | null;
+        learningPoints: string[];
     }) | null>;
-    static addModule(courseId: string, title: string, order: number): Promise<{
+    static getCourseBasicOnly(courseId: string): Promise<{
         id: string;
         title: string;
-        order: number;
-        courseId: string;
-    }>;
-    static updateModule(adminId: string, moduleId: string, data: {
-        title?: string;
-        order?: number;
-    }): Promise<{
-        id: string;
-        title: string;
-        order: number;
-        courseId: string;
-    }>;
-    static deleteModule(adminId: string, moduleId: string): Promise<{
-        success: boolean;
-    }>;
-    static addLesson(moduleId: string, title: string, order: number): Promise<{
-        id: string;
-        title: string;
-        version: number;
-        updatedAt: Date;
-        order: number;
-        isDeleted: boolean;
-        isWrapper: boolean;
-        completionRule: string;
-        moduleId: string;
-    }>;
-    static deleteLesson(adminId: string, lessonId: string): Promise<{
-        success: boolean;
-    }>;
-    static updateLesson(adminId: string, lessonId: string, data: {
-        title?: string;
-        order?: number;
-        moduleId?: string;
-    }): Promise<{
-        id: string;
-        title: string;
-        version: number;
-        updatedAt: Date;
-        order: number;
-        isDeleted: boolean;
-        isWrapper: boolean;
-        completionRule: string;
-        moduleId: string;
-    }>;
-    static reorderModules(adminId: string, moduleIdOrders: {
-        id: string;
-        order: number;
-    }[]): Promise<{
-        id: string;
-        title: string;
-        order: number;
-        courseId: string;
-    }[]>;
-    static reorderLessons(adminId: string, lessonIdOrders: {
-        id: string;
-        moduleId: string;
-        order: number;
-    }[]): Promise<{
-        id: string;
-        title: string;
-        version: number;
-        updatedAt: Date;
-        order: number;
-        isDeleted: boolean;
-        isWrapper: boolean;
-        completionRule: string;
-        moduleId: string;
-    }[]>;
-    static reorderVideos(adminId: string, videoIdOrders: {
-        id: string;
-        lessonId: string;
-        order: number;
-    }[]): Promise<{
-        id: string;
-        title: string;
-        order: number;
-        lessonId: string;
-        videoUrl: string;
-        duration: number;
-        isSample: boolean;
-    }[]>;
-    static reorderPYQs(adminId: string, pyqIdOrders: {
-        id: string;
-        lessonId: string;
-        order: number;
-    }[]): Promise<{
-        id: string;
-        description: string | null;
+        slug: string;
+        description: string;
+        basePrice: import("@prisma/client/runtime/library").Decimal;
+        currency: string;
+        status: import(".prisma/client").$Enums.EntityStatus;
         createdAt: Date;
-        order: number;
-        lessonId: string;
-        isPublished: boolean;
-        questionType: string;
-        questionText: string | null;
-        questionImages: import("@prisma/client/runtime/library").JsonValue | null;
-        answerImages: import("@prisma/client/runtime/library").JsonValue | null;
-        solutionVideoUrl: string | null;
-        difficulty: string | null;
-        isSimilar: boolean;
-        answerText: string | null;
-    }[]>;
-    static reorderQuizQuestions(adminId: string, questionIdOrders: {
-        id: string;
-        quizId: string;
-        order: number;
-    }[]): Promise<{
-        id: string;
-        order: number;
-        quizId: string;
-        type: string;
-        prompt: string;
-        numericValue: number | null;
-        tolerance: number | null;
-    }[]>;
-    static updateLessonContent(lessonId: string, videos?: any[], pyqs?: any[], quiz?: any): Promise<({
+        category: string;
+        level: string;
+        thumbnail: string | null;
+        pricingType: import(".prisma/client").$Enums.PricingType;
+        promoVideoUrl: string | null;
+        validityDays: number | null;
+        branch: string | null;
+        subjectType: string | null;
+        courseCode: string | null;
+        longDescription: string | null;
+        learningPoints: string[];
+    } | null>;
+    static getLessonDetails(lessonId: string): Promise<({
         videos: {
             id: string;
             title: string;
@@ -423,6 +274,7 @@ export declare class AdminService {
             order: number;
             lessonId: string;
             isPublished: boolean;
+            isSample: boolean;
             questionType: string;
             questionText: string | null;
             questionImages: import("@prisma/client/runtime/library").JsonValue | null;
@@ -439,9 +291,217 @@ export declare class AdminService {
         updatedAt: Date;
         order: number;
         isDeleted: boolean;
+        moduleId: string;
         isWrapper: boolean;
         completionRule: string;
+    }) | null>;
+    static addModule(courseId: string, title: string, order: number): Promise<{
+        id: string;
+        title: string;
+        order: number;
+        courseId: string;
+    }>;
+    static updateModule(adminId: string, moduleId: string, data: {
+        title?: string;
+        order?: number;
+    }): Promise<{
+        id: string;
+        title: string;
+        order: number;
+        courseId: string;
+    }>;
+    static deleteModule(adminId: string, moduleId: string): Promise<{
+        success: boolean;
+    }>;
+    static addLesson(moduleId: string, title: string, order: number): Promise<{
+        id: string;
+        title: string;
+        version: number;
+        updatedAt: Date;
+        order: number;
+        isDeleted: boolean;
         moduleId: string;
+        isWrapper: boolean;
+        completionRule: string;
+    }>;
+    static deleteLesson(adminId: string, lessonId: string): Promise<{
+        success: boolean;
+    }>;
+    static updateLesson(adminId: string, lessonId: string, data: {
+        title?: string;
+        order?: number;
+        moduleId?: string;
+    }): Promise<{
+        id: string;
+        title: string;
+        version: number;
+        updatedAt: Date;
+        order: number;
+        isDeleted: boolean;
+        moduleId: string;
+        isWrapper: boolean;
+        completionRule: string;
+    }>;
+    static cloneLesson(adminId: string, lessonId: string, targetModuleId: string): Promise<{
+        id: string;
+        title: string;
+        version: number;
+        updatedAt: Date;
+        order: number;
+        isDeleted: boolean;
+        moduleId: string;
+        isWrapper: boolean;
+        completionRule: string;
+    }>;
+    static cloneModule(adminId: string, moduleId: string, targetCourseId: string): Promise<{
+        id: string;
+        title: string;
+        order: number;
+        courseId: string;
+    }>;
+    static reorderModules(adminId: string, moduleIdOrders: {
+        id: string;
+        order: number;
+    }[]): Promise<{
+        id: string;
+        title: string;
+        order: number;
+        courseId: string;
+    }[]>;
+    static reorderLessons(adminId: string, lessonIdOrders: {
+        id: string;
+        moduleId: string;
+        order: number;
+    }[]): Promise<{
+        id: string;
+        title: string;
+        version: number;
+        updatedAt: Date;
+        order: number;
+        isDeleted: boolean;
+        moduleId: string;
+        isWrapper: boolean;
+        completionRule: string;
+    }[]>;
+    static reorderVideos(adminId: string, videoIdOrders: {
+        id: string;
+        lessonId: string;
+        order: number;
+    }[]): Promise<{
+        id: string;
+        title: string;
+        order: number;
+        lessonId: string;
+        videoUrl: string;
+        duration: number;
+        isSample: boolean;
+    }[]>;
+    static reorderPYQs(adminId: string, pyqIdOrders: {
+        id: string;
+        lessonId: string;
+        order: number;
+    }[]): Promise<{
+        id: string;
+        description: string | null;
+        createdAt: Date;
+        order: number;
+        lessonId: string;
+        isPublished: boolean;
+        isSample: boolean;
+        questionType: string;
+        questionText: string | null;
+        questionImages: import("@prisma/client/runtime/library").JsonValue | null;
+        answerImages: import("@prisma/client/runtime/library").JsonValue | null;
+        solutionVideoUrl: string | null;
+        difficulty: string | null;
+        isSimilar: boolean;
+        answerText: string | null;
+    }[]>;
+    static reorderQuizQuestions(adminId: string, questionIdOrders: {
+        id: string;
+        quizId: string;
+        order: number;
+    }[]): Promise<{
+        id: string;
+        order: number;
+        quizId: string;
+        type: string;
+        prompt: string;
+        numericValue: number | null;
+        tolerance: number | null;
+    }[]>;
+    static updateLessonContent(adminId: string, lessonId: string, videos?: any[], pyqs?: any[], quiz?: any): Promise<({
+        videos: {
+            id: string;
+            title: string;
+            order: number;
+            lessonId: string;
+            videoUrl: string;
+            duration: number;
+            isSample: boolean;
+        }[];
+        quiz: ({
+            questions: ({
+                options: {
+                    id: string;
+                    questionId: string;
+                    text: string;
+                    isCorrect: boolean;
+                }[];
+            } & {
+                id: string;
+                order: number;
+                quizId: string;
+                type: string;
+                prompt: string;
+                numericValue: number | null;
+                tolerance: number | null;
+            })[];
+        } & {
+            id: string;
+            title: string;
+            description: string | null;
+            createdAt: Date;
+            updatedAt: Date;
+            lessonId: string;
+            isPublished: boolean;
+        }) | null;
+        pyqs: ({
+            occurrences: {
+                id: string;
+                courseCode: string;
+                year: number;
+                pyqId: string;
+                month: string;
+                part: string | null;
+            }[];
+        } & {
+            id: string;
+            description: string | null;
+            createdAt: Date;
+            order: number;
+            lessonId: string;
+            isPublished: boolean;
+            isSample: boolean;
+            questionType: string;
+            questionText: string | null;
+            questionImages: import("@prisma/client/runtime/library").JsonValue | null;
+            answerImages: import("@prisma/client/runtime/library").JsonValue | null;
+            solutionVideoUrl: string | null;
+            difficulty: string | null;
+            isSimilar: boolean;
+            answerText: string | null;
+        })[];
+    } & {
+        id: string;
+        title: string;
+        version: number;
+        updatedAt: Date;
+        order: number;
+        isDeleted: boolean;
+        moduleId: string;
+        isWrapper: boolean;
+        completionRule: string;
     }) | null>;
     static listBranches(): Promise<{
         id: string;
@@ -463,5 +523,74 @@ export declare class AdminService {
     }>;
     static deleteBranch(adminId: string, id: string): Promise<{
         success: boolean;
+    }>;
+    static createPYQ(lessonId: string, data: any): Promise<{
+        occurrences: {
+            id: string;
+            courseCode: string;
+            year: number;
+            pyqId: string;
+            month: string;
+            part: string | null;
+        }[];
+    } & {
+        id: string;
+        description: string | null;
+        createdAt: Date;
+        order: number;
+        lessonId: string;
+        isPublished: boolean;
+        isSample: boolean;
+        questionType: string;
+        questionText: string | null;
+        questionImages: import("@prisma/client/runtime/library").JsonValue | null;
+        answerImages: import("@prisma/client/runtime/library").JsonValue | null;
+        solutionVideoUrl: string | null;
+        difficulty: string | null;
+        isSimilar: boolean;
+        answerText: string | null;
+    }>;
+    static updatePYQ(pyqId: string, data: any): Promise<{
+        occurrences: {
+            id: string;
+            courseCode: string;
+            year: number;
+            pyqId: string;
+            month: string;
+            part: string | null;
+        }[];
+    } & {
+        id: string;
+        description: string | null;
+        createdAt: Date;
+        order: number;
+        lessonId: string;
+        isPublished: boolean;
+        isSample: boolean;
+        questionType: string;
+        questionText: string | null;
+        questionImages: import("@prisma/client/runtime/library").JsonValue | null;
+        answerImages: import("@prisma/client/runtime/library").JsonValue | null;
+        solutionVideoUrl: string | null;
+        difficulty: string | null;
+        isSimilar: boolean;
+        answerText: string | null;
+    }>;
+    static deletePYQ(pyqId: string): Promise<{
+        id: string;
+        description: string | null;
+        createdAt: Date;
+        order: number;
+        lessonId: string;
+        isPublished: boolean;
+        isSample: boolean;
+        questionType: string;
+        questionText: string | null;
+        questionImages: import("@prisma/client/runtime/library").JsonValue | null;
+        answerImages: import("@prisma/client/runtime/library").JsonValue | null;
+        solutionVideoUrl: string | null;
+        difficulty: string | null;
+        isSimilar: boolean;
+        answerText: string | null;
     }>;
 }

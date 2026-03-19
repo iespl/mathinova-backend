@@ -26,7 +26,7 @@ app.use('/api/student', studentRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/support', supportRoutes);
 app.get('/health', (req, res) => {
-    res.json({ status: 'ok', timestamp: new Date().toISOString() });
+    res.json({ status: 'ok-cloning-ver-1.1', timestamp: new Date().toISOString() });
 });
 // Backend restart trigger
 export default app;

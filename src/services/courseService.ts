@@ -28,16 +28,19 @@ export class CourseService {
     static async getCourseBySlug(slug: string) {
         const course = await prisma.course.findUnique({
             where: { slug },
-            relationLoadStrategy: 'join', // Added to reduce round-trips
+            // Switch to separate queries to avoid Cartesian product and improve performance for large courses
+            relationLoadStrategy: 'query', 
             include: {
                 modules: {
+                    orderBy: { order: 'asc' },
                     include: {
                         lessons: {
                             where: { isDeleted: false },
+                            orderBy: { order: 'asc' },
                             include: {
-                                videos: true,
+                                videos: { orderBy: { order: 'asc' } },
                                 quiz: true,
-                                pyqs: true
+                                pyqs: { orderBy: { order: 'asc' } }
                             }
                         }
                     }
@@ -74,30 +77,63 @@ export class CourseService {
         };
     }
 
-    // Public endpoint
+    // Public endpoint - returns only sample videos with query-level filtering
     static async getPublicCourse(slugOrId: string) {
         const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(slugOrId);
 
-        const course = await prisma.course.findFirst({
-            where: isUuid 
-                ? { id: slugOrId, status: EntityStatus.published } 
-                : { slug: slugOrId, status: EntityStatus.published },
-            relationLoadStrategy: 'join',
+        const course = await prisma.course.findUnique({
+            where: isUuid ? { id: slugOrId, status: EntityStatus.published } : { slug: slugOrId, status: EntityStatus.published },
+            // Switch to separate queries to avoid Cartesian product and improve performance for large courses
+            relationLoadStrategy: 'query', 
             include: {
+                _count: {
+                    select: {
+                        modules: true,
+                        enrollments: true
+                    }
+                },
                 modules: {
+                    orderBy: { order: 'asc' },
                     include: {
                         lessons: {
                             where: { isDeleted: false },
+                            orderBy: { order: 'asc' },
                             include: {
-                                videos: true,
+                                _count: {
+                                    select: {
+                                        videos: true,
+                                        pyqs: true
+                                    }
+                                },
+                                videos: {
+                                    where: { isSample: true }, // Filter samples at the database level for public page
+                                    select: {
+                                        id: true,
+                                        title: true,
+                                        duration: true,
+                                        isSample: true,
+                                        videoUrl: true,
+                                        order: true
+                                    },
+                                    orderBy: { order: 'asc' }
+                                },
                                 quiz: {
                                     select: {
                                         id: true
                                     }
                                 },
                                 pyqs: {
-                                    include: {
-                                        occurrences: true
+                                    where: { isSample: true, isPublished: true }, // Filter samples at the database level
+                                    select: {
+                                        id: true,
+                                        isSample: true,
+                                        questionType: true,
+                                        questionText: true,
+                                        questionImages: true,
+                                        answerImages: true,
+                                        solutionVideoUrl: true,
+                                        answerText: true,
+                                        order: true
                                     },
                                     orderBy: { order: 'asc' }
                                 }
@@ -110,7 +146,7 @@ export class CourseService {
 
         if (!course) return null;
 
-        // Calculate counts
+        // Calculate counts using pre-calculated aggregate fields
         let totalLessons = 0;
         let totalVideos = 0;
         let totalQuizzes = 0;
@@ -119,34 +155,16 @@ export class CourseService {
         course.modules.forEach(mod => {
             totalLessons += mod.lessons.length;
             mod.lessons.forEach(lesson => {
-                totalVideos += lesson.videos.length;
+                totalVideos += (lesson as any)._count.videos;
                 if (lesson.quiz) totalQuizzes++;
-                totalPYQs += lesson.pyqs.length;
+                totalPYQs += (lesson as any)._count.pyqs;
             });
         });
 
         return {
             ...course,
-            modules: course.modules.map(mod => ({
-                ...mod,
-                lessons: mod.lessons.map(lesson => ({
-                    ...lesson,
-                    videos: lesson.videos.map(v => ({
-                        ...v,
-                        videoUrl: v.isSample ? v.videoUrl : null
-                    })),
-                    pyqs: lesson.pyqs.map(p => ({
-                        ...p,
-                        questionText: p.isSample ? p.questionText : null,
-                        questionImages: p.isSample ? p.questionImages : [],
-                        answerImages: p.isSample ? p.answerImages : [],
-                        solutionVideoUrl: p.isSample ? p.solutionVideoUrl : null,
-                        answerText: p.isSample ? p.answerText : null
-                    }))
-                }))
-            })),
             _counts: {
-                modules: course.modules.length,
+                modules: course._count.modules,
                 lessons: totalLessons,
                 videos: totalVideos,
                 quizzes: totalQuizzes,
@@ -158,16 +176,19 @@ export class CourseService {
     static async getCourseById(id: string) {
         const course = await prisma.course.findUnique({
             where: { id },
-            relationLoadStrategy: 'join', // Added to reduce round-trips
+            // Switch to separate queries to avoid Cartesian product and improve performance for large courses
+            relationLoadStrategy: 'query', 
             include: {
                 modules: {
+                    orderBy: { order: 'asc' },
                     include: {
                         lessons: {
                             where: { isDeleted: false },
+                            orderBy: { order: 'asc' },
                             include: {
-                                videos: true,
+                                videos: { orderBy: { order: 'asc' } },
                                 quiz: true,
-                                pyqs: true
+                                pyqs: { orderBy: { order: 'asc' } }
                             }
                         }
                     }

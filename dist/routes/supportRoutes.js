@@ -5,7 +5,7 @@ const router = Router();
 // TEMPORARY: Unauthenticated route to force refund last payment
 router.post('/force-refund-latest', async (req, res) => {
     try {
-        console.log('🔄 Starting manual refund via support route...');
+        console.log('ðŸ”„ Starting manual refund via support route...');
         const lastPayment = await prisma.payment.findFirst({
             where: { status: 'success' },
             orderBy: { createdAt: 'desc' },
@@ -37,7 +37,7 @@ router.post('/force-refund-latest', async (req, res) => {
             }
             return { payment: paymentUpdated, enrollment: enrollmentUpdated };
         });
-        console.log('✅ Manual refund completed:', result);
+        console.log('âœ… Manual refund completed:', result);
         res.json({ message: 'Refund successful', data: result });
     }
     catch (error) {

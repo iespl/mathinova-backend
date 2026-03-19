@@ -9,6 +9,8 @@ export declare class AdminController {
     static updateCourse(req: Request, res: Response): Promise<void>;
     static deleteCourse(req: Request, res: Response): Promise<void>;
     static getCourse(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;
+    static getCourseBasic(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;
+    static getLessonDetails(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;
     static addModule(req: Request, res: Response): Promise<void>;
     static updateModule(req: Request, res: Response): Promise<void>;
     static deleteModule(req: Request, res: Response): Promise<void>;
@@ -16,6 +18,11 @@ export declare class AdminController {
     static updateLesson(req: Request, res: Response): Promise<void>;
     static updateLessonContent(req: Request, res: Response): Promise<void>;
     static deleteLesson(req: Request, res: Response): Promise<void>;
+    static cloneModule(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;
+    static cloneLesson(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;
+    static createPYQ(req: Request, res: Response): Promise<void>;
+    static updatePYQ(req: Request, res: Response): Promise<void>;
+    static deletePYQ(req: Request, res: Response): Promise<void>;
     static reorderModules(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;
     static reorderLessons(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;
     static reorderVideos(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;

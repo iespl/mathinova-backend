@@ -1,0 +1,16 @@
+.gcloudignore
+.git
+.gitignore
+node_modules/
+dist/
+*.json
+*.log
+*.sql
+*.txt
+!package.json
+!package-lock.json
+!tsconfig.json
+!prisma/*.json
+!Dockerfile
+!.dockerignore
+.env

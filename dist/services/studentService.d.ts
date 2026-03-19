@@ -25,7 +25,7 @@ export declare class StudentService {
             subjectType: string | null;
             courseCode: string | null;
             longDescription: string | null;
-            learningPoints: import("@prisma/client/runtime/library").JsonValue | null;
+            learningPoints: string[];
         };
         id: string;
         userId: string;
@@ -97,6 +97,7 @@ export declare class StudentService {
                     order: number;
                     lessonId: string;
                     isPublished: boolean;
+                    isSample: boolean;
                     questionType: string;
                     questionText: string | null;
                     questionImages: import("@prisma/client/runtime/library").JsonValue | null;
@@ -119,9 +120,9 @@ export declare class StudentService {
                 updatedAt: Date;
                 order: number;
                 isDeleted: boolean;
+                moduleId: string;
                 isWrapper: boolean;
                 completionRule: string;
-                moduleId: string;
             })[];
         } & {
             id: string;
@@ -148,7 +149,7 @@ export declare class StudentService {
         subjectType: string | null;
         courseCode: string | null;
         longDescription: string | null;
-        learningPoints: import("@prisma/client/runtime/library").JsonValue | null;
+        learningPoints: string[];
     }) | null>;
     static updateVideoProgress(userId: string, lessonId: string, videoId: string, lastWatchedPosition: number): Promise<{
         id: string;
@@ -226,6 +227,7 @@ export declare class StudentService {
         order: number;
         lessonId: string;
         isPublished: boolean;
+        isSample: boolean;
         questionType: string;
         questionText: string | null;
         questionImages: import("@prisma/client/runtime/library").JsonValue | null;
@@ -238,8 +240,8 @@ export declare class StudentService {
     static trackPYQView(userId: string, pyqId: string): Promise<{
         id: string;
         userId: string;
-        viewedAt: Date;
         pyqId: string;
+        viewedAt: Date;
     }>;
     private static computeLessonCompletion;
     static updateProgress(userId: string, lessonId: string, completed: boolean, lastWatchedPosition: number): Promise<{

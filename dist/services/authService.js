@@ -136,7 +136,7 @@ export class AuthService {
     }
     static async forgotPassword(email) {
         const user = await prisma.user.findUnique({ where: { email } });
-        // Always return success — don't reveal whether email exists
+        // Always return success â€” don't reveal whether email exists
         if (!user) {
             return { message: 'If an account with that email exists, a password reset link has been sent.' };
         }

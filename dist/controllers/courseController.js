@@ -1,10 +1,11 @@
 import { CourseService } from '../services/courseService.js';
+import { EntityStatus } from '@prisma/client';
 import cache from '../utils/cache.js';
 export class CourseController {
     static async getAllCourses(req, res) {
         try {
-            const status = req.query.status;
-            const courses = await CourseService.getCourses(status);
+            // Public listing should strictly only include published courses
+            const courses = await CourseService.getCourses(EntityStatus.published);
             res.json(courses);
         }
         catch (error) {
@@ -70,7 +71,7 @@ export class CourseController {
                         isWrapper: lesson.isWrapper,
                         videos: lesson.videos, // Already filtered to sample videos only
                         quiz: !!lesson.quiz,
-                        pyqs: lesson.pyqs.length > 0
+                        pyqs: lesson.pyqs // Pass the full array (content already masked for non-sample PYQs)
                     }))
                 }))
             };

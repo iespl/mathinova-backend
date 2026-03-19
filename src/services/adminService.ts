@@ -198,35 +198,59 @@ export class AdminService {
     static async getCourseById(courseId: string) {
         return prisma.course.findUnique({
             where: { id: courseId },
+            relationLoadStrategy: 'join',
             include: {
                 modules: {
                     include: {
                         lessons: {
                             include: {
-                                videos: {
-                                    orderBy: { order: 'asc' }
-                                },
-                                pyqs: {
-                                    include: {
-                                        occurrences: true
-                                    },
-                                    orderBy: { order: 'asc' }
+                                _count: {
+                                    select: {
+                                        videos: true,
+                                        pyqs: true
+                                    }
                                 },
                                 quiz: {
-                                    include: {
-                                        questions: {
-                                            include: {
-                                                options: true
-                                            },
-                                            orderBy: { order: 'asc' }
-                                        }
-                                    }
+                                    select: { id: true }
                                 }
                             },
                             orderBy: { order: 'asc' }
                         }
                     },
                     orderBy: { order: 'asc' }
+                }
+            }
+        });
+    }
+
+    static async getCourseBasicOnly(courseId: string) {
+        return prisma.course.findUnique({
+            where: { id: courseId }
+        });
+    }
+
+    static async getLessonDetails(lessonId: string) {
+        return prisma.lesson.findUnique({
+            where: { id: lessonId },
+            include: {
+                videos: {
+                    orderBy: { order: 'asc' }
+                },
+                pyqs: {
+                    include: {
+                        occurrences: true
+                    },
+                    orderBy: { order: 'asc' }
+                },
+                quiz: {
+                    include: {
+                        questions: {
+                            include: {
+                                options: true
+                            },
+                            orderBy: { order: 'asc' }
+                        }
+                    }
                 }
             }
         });
@@ -321,6 +345,237 @@ export class AdminService {
         });
 
         return after;
+    }
+
+    static async cloneLesson(adminId: string, lessonId: string, targetModuleId: string) {
+        return prisma.$transaction(async (tx) => {
+            // 1. Fetch source lesson with all nested data
+            const source = await tx.lesson.findUnique({
+                where: { id: lessonId },
+                include: {
+                    videos: true,
+                    pyqs: { include: { occurrences: true } },
+                    quiz: {
+                        include: {
+                            questions: {
+                                include: { options: true }
+                            }
+                        }
+                    }
+                }
+            });
+
+            if (!source) throw new Error('Source lesson not found');
+
+            // 2. Determine target order
+            const maxOrder = await tx.lesson.findFirst({
+                where: { moduleId: targetModuleId },
+                orderBy: { order: 'desc' },
+                select: { order: true }
+            });
+            const targetOrder = (maxOrder?.order ?? -1) + 1;
+
+            // 3. Deep Clone
+            const cloned = await tx.lesson.create({
+                data: {
+                    moduleId: targetModuleId,
+                    title: `${source.title} (Copy)`,
+                    order: targetOrder,
+                    completionRule: source.completionRule,
+                    isWrapper: source.isWrapper,
+                    videos: {
+                        create: source.videos.map(v => ({
+                            title: v.title,
+                            videoUrl: v.videoUrl,
+                            duration: v.duration,
+                            order: v.order,
+                            isSample: v.isSample
+                        }))
+                    },
+                    pyqs: {
+                        create: source.pyqs.map(p => ({
+                            questionType: p.questionType,
+                            questionText: p.questionText,
+                            answerText: p.answerText,
+                            questionImages: p.questionImages as any,
+                            answerImages: p.answerImages as any,
+                            solutionVideoUrl: p.solutionVideoUrl,
+                            difficulty: p.difficulty,
+                            order: p.order,
+                            isSample: p.isSample,
+                            description: p.description,
+                            occurrences: {
+                                create: p.occurrences.map(o => ({
+                                    year: o.year,
+                                    month: o.month,
+                                    courseCode: o.courseCode,
+                                    part: o.part
+                                }))
+                            }
+                        }))
+                    },
+                    quiz: source.quiz ? {
+                        create: {
+                            title: source.quiz.title,
+                            description: source.quiz.description,
+                            isPublished: source.quiz.isPublished,
+                            questions: {
+                                create: source.quiz.questions.map(q => ({
+                                    type: q.type,
+                                    prompt: q.prompt,
+                                    order: q.order,
+                                    numericValue: q.numericValue,
+                                    tolerance: q.tolerance,
+                                    options: {
+                                        create: q.options.map(o => ({
+                                            text: o.text,
+                                            isCorrect: o.isCorrect
+                                        }))
+                                    }
+                                }))
+                            }
+                        }
+                    } : undefined
+                }
+            });
+
+            // 4. Log Audit
+            await AuditService.logAction({
+                actorUserId: adminId,
+                action: 'CLONE_LESSON',
+                entityType: 'Lesson',
+                entityId: cloned.id,
+                beforeState: { sourceId: lessonId },
+                afterState: { targetModuleId, newId: cloned.id }
+            });
+
+            console.log(`[AdminService.cloneLesson] Success: Cloned ${lessonId} -> ${cloned.id}`);
+            return cloned;
+        }, { timeout: 300000 });
+    }
+
+    static async cloneModule(adminId: string, moduleId: string, targetCourseId: string) {
+        console.log(`[AdminService.cloneModule] Starting: ${moduleId} -> Course ${targetCourseId}`);
+        return prisma.$transaction(async (tx) => {
+            // 1. Fetch source module with all lessons and content
+            const source = await tx.module.findUnique({
+                where: { id: moduleId },
+                include: {
+                    lessons: {
+                        include: {
+                            videos: true,
+                            pyqs: { include: { occurrences: true } },
+                            quiz: {
+                                include: {
+                                    questions: {
+                                        include: { options: true }
+                                    }
+                                }
+                            }
+                        },
+                        orderBy: { order: 'asc' }
+                    }
+                }
+            });
+
+            if (!source) throw new Error('Source module not found');
+
+            // 2. Determine target order
+            const maxOrder = await tx.module.findFirst({
+                where: { courseId: targetCourseId },
+                orderBy: { order: 'desc' },
+                select: { order: true }
+            });
+            const targetOrder = (maxOrder?.order ?? -1) + 1;
+
+            // 3. Create new Module
+            const clonedModule = await tx.module.create({
+                data: {
+                    courseId: targetCourseId,
+                    title: `${source.title} (Copy)`,
+                    order: targetOrder
+                }
+            });
+
+            // 4. Clone each lesson into the new module
+            for (const lesson of source.lessons) {
+                await tx.lesson.create({
+                    data: {
+                        moduleId: clonedModule.id,
+                        title: lesson.title, // Keep lesson titles same as original within the copied module
+                        order: lesson.order,
+                        completionRule: lesson.completionRule,
+                        isWrapper: lesson.isWrapper,
+                        videos: {
+                            create: lesson.videos.map(v => ({
+                                title: v.title,
+                                videoUrl: v.videoUrl,
+                                duration: v.duration,
+                                order: v.order,
+                                isSample: v.isSample
+                            }))
+                        },
+                        pyqs: {
+                            create: lesson.pyqs.map(p => ({
+                                questionType: p.questionType,
+                                questionText: p.questionText,
+                                answerText: p.answerText,
+                                questionImages: p.questionImages as any,
+                                answerImages: p.answerImages as any,
+                                solutionVideoUrl: p.solutionVideoUrl,
+                                difficulty: p.difficulty,
+                                order: p.order,
+                                isSample: p.isSample,
+                                description: p.description,
+                                occurrences: {
+                                    create: p.occurrences.map(o => ({
+                                        year: o.year,
+                                        month: o.month,
+                                        courseCode: o.courseCode,
+                                        part: o.part
+                                    }))
+                                }
+                            }))
+                        },
+                        quiz: lesson.quiz ? {
+                            create: {
+                                title: lesson.quiz.title,
+                                description: lesson.quiz.description,
+                                isPublished: lesson.quiz.isPublished,
+                                questions: {
+                                    create: lesson.quiz.questions.map(q => ({
+                                        type: q.type,
+                                        prompt: q.prompt,
+                                        order: q.order,
+                                        numericValue: q.numericValue,
+                                        tolerance: q.tolerance,
+                                        options: {
+                                            create: q.options.map(o => ({
+                                                text: o.text,
+                                                isCorrect: o.isCorrect
+                                            }))
+                                        }
+                                    }))
+                                }
+                            }
+                        } : undefined
+                    }
+                });
+            }
+
+            // 5. Log Audit
+            await AuditService.logAction({
+                actorUserId: adminId,
+                action: 'CLONE_MODULE',
+                entityType: 'Module',
+                entityId: clonedModule.id,
+                beforeState: { sourceId: moduleId },
+                afterState: { targetCourseId, newId: clonedModule.id, lessonsCount: source.lessons.length }
+            });
+
+            console.log(`[AdminService.cloneModule] Success: Cloned ${moduleId} -> ${clonedModule.id} with ${source.lessons.length} lessons`);
+            return clonedModule;
+        }, { timeout: 300000 });
     }
 
     // --- Reordering Logic ---
@@ -446,11 +701,12 @@ export class AdminService {
         });
     }
 
-    static async updateLessonContent(lessonId: string, videos?: any[], pyqs?: any[], quiz?: any) {
+    static async updateLessonContent(adminId: string, lessonId: string, videos?: any[], pyqs?: any[], quiz?: any) {
+        // Increase timeout to 5 minutes (300,000ms) for large lessons
         return prisma.$transaction(async (tx) => {
+            console.log(`[updateLessonContent] Starting transaction for lesson ${lessonId} by admin ${adminId}`);
+            
             // 1. Update Videos
-
-            // Better: Handle each video.
             if (videos) {
                 await tx.video.deleteMany({ where: { lessonId } });
                 if (videos.length > 0) {
@@ -467,11 +723,18 @@ export class AdminService {
                 }
             }
 
-            // 2. Update PYQs (Upsert to prevent wiping connections like PYQView)
+            // 2. Update PYQs and Occurrences
             if (pyqs) {
-                // Determine which PYQs were removed by comparing the given IDs with existing IDs
                 const validIds = pyqs.map((p: any) => p.id).filter((id: any) => id && !String(id).startsWith('new-'));
                 
+                // Get pre-state for auditing before we delete anything
+                const existingPYQs = await tx.pYQ.findMany({
+                    where: { lessonId },
+                    select: { id: true }
+                });
+                const existingIds = existingPYQs.map(p => p.id);
+
+                // Bulk delete removed PYQs (and their occurrences via cascade)
                 await tx.pYQ.deleteMany({
                     where: {
                         lessonId,
@@ -479,11 +742,23 @@ export class AdminService {
                     }
                 });
 
+                // Clear all occurrences for remaining PYQs to bulk recreate them
+                await tx.pYQOccurrence.deleteMany({
+                    where: {
+                        pyq: { lessonId }
+                    }
+                });
+
+                const allOccurrences: any[] = [];
+                
                 for (const [idx, p] of pyqs.entries()) {
                     const orderValue = p.order !== undefined ? p.order : idx;
-                    const isNew = p.id && String(p.id).startsWith('new-');
+                    const isNew = !p.id || String(p.id).startsWith('new-');
                     
-                    if (p.id && !isNew) {
+                    let pyqId = p.id;
+
+                    if (!isNew) {
+                        // Update existing PYQ (without nested occurrences)
                         await tx.pYQ.update({
                             where: { id: p.id },
                             data: {
@@ -496,20 +771,12 @@ export class AdminService {
                                 difficulty: p.difficulty || 'Medium',
                                 order: orderValue,
                                 isSample: p.isSample || false,
-                                description: p.description,
-                                occurrences: {
-                                    deleteMany: {},
-                                    create: (p.occurrences || []).map((o: any) => ({
-                                        year: parseInt(o.year) || 0,
-                                        month: o.month || '',
-                                        courseCode: o.courseCode || '',
-                                        part: o.part || 'Part-A'
-                                    }))
-                                }
+                                description: p.description
                             }
                         });
                     } else {
-                        await tx.pYQ.create({
+                        // Create new PYQ (without nested occurrences)
+                        const newPYQ = await tx.pYQ.create({
                             data: {
                                 lessonId,
                                 questionType: p.questionType || 'text',
@@ -521,18 +788,31 @@ export class AdminService {
                                 difficulty: p.difficulty || 'Medium',
                                 order: orderValue,
                                 isSample: p.isSample || false,
-                                description: p.description,
-                                occurrences: {
-                                    create: (p.occurrences || []).map((o: any) => ({
-                                        year: parseInt(o.year) || 0,
-                                        month: o.month || '',
-                                        courseCode: o.courseCode || '',
-                                        part: o.part || 'Part-A'
-                                    }))
-                                }
+                                description: p.description
                             }
                         });
+                        pyqId = newPYQ.id;
                     }
+
+                    // Collect occurrences for bulk insertion
+                    if (p.occurrences && p.occurrences.length > 0) {
+                        p.occurrences.forEach((o: any) => {
+                            allOccurrences.push({
+                                pyqId,
+                                year: parseInt(o.year) || 0,
+                                month: o.month || '',
+                                courseCode: o.courseCode || '',
+                                part: o.part || 'Part-A'
+                            });
+                        });
+                    }
+                }
+
+                // Bulk insert all occurrences
+                if (allOccurrences.length > 0) {
+                    await tx.pYQOccurrence.createMany({
+                        data: allOccurrences
+                    });
                 }
             }
 
@@ -571,7 +851,7 @@ export class AdminService {
                             }
                         });
 
-                        if (q.options) {
+                        if (q.options && q.options.length > 0) {
                             await tx.mCQOption.createMany({
                                 data: q.options.map((o: any) => ({
                                     questionId: questionResult.id,
@@ -586,9 +866,20 @@ export class AdminService {
                 await tx.quiz.deleteMany({ where: { lessonId } });
             }
 
+            // 4. Log the Audit Event
+            await AuditService.logAction({
+                actorUserId: adminId,
+                action: 'UPDATE_LESSON_CONTENT',
+                entityType: 'Lesson',
+                entityId: lessonId,
+                beforeState: { videosCount: videos?.length, pyqsCount: pyqs?.length, hasQuiz: !!quiz },
+                afterState: { success: true }
+            });
+
+            console.log(`[updateLessonContent] Transaction completed successfully for lesson ${lessonId}`);
+
             return tx.lesson.findUnique({
                 where: { id: lessonId },
-                relationLoadStrategy: 'join',
                 include: {
                     videos: { orderBy: { order: 'asc' } },
                     pyqs: {
@@ -608,7 +899,7 @@ export class AdminService {
                 }
             });
         }, {
-            timeout: 120000
+            timeout: 300000 // 5 minutes
         });
     }
 

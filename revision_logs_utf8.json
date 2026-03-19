@@ -1,0 +1,1395 @@
+﻿[
+  {
+    "httpRequest": {
+      "latency": "0.005855744s",
+      "protocol": "HTTP/1.1",
+      "remoteIp": "192.140.152.181",
+      "requestMethod": "GET",
+      "requestSize": "359",
+      "requestUrl": "https://mathinova-backend-420478767625.us-central1.run.app/api/health",
+      "responseSize": "401",
+      "serverIp": "34.143.77.2",
+      "status": 404,
+      "userAgent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.7920"
+    },
+    "insertId": "69b3d3db000ebf2706248fec",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-03-13T09:07:39.972089409Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "63fb95c9020c77cb",
+    "timestamp": "2026-03-13T09:07:39.952212Z",
+    "trace": "projects/mathinova-staging/traces/e625263694e170e190ee05cc11e6ab9c",
+    "traceSampled": true
+  },
+  {
+    "insertId": "69b3d22100051faa5f288f75",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-13T09:00:17.676219794Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "}",
+    "timestamp": "2026-03-13T09:00:17.335786Z"
+  },
+  {
+    "insertId": "69b3d22100051fa50769bf06",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-13T09:00:17.676219794Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "  }",
+    "timestamp": "2026-03-13T09:00:17.335781Z"
+  },
+  {
+    "insertId": "69b3d22100051fa162c254be",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-13T09:00:17.676219794Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    error: 'Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 120000 ms, however 120200 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.'",
+    "timestamp": "2026-03-13T09:00:17.335777Z"
+  },
+  {
+    "insertId": "69b3d22100051f9a60ac1670",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-13T09:00:17.676219794Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    modelName: 'PYQ',",
+    "timestamp": "2026-03-13T09:00:17.335770Z"
+  },
+  {
+    "insertId": "69b3d22100051f9597cbdee8",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-13T09:00:17.342636550Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "  meta: {",
+    "timestamp": "2026-03-13T09:00:17.335765Z"
+  },
+  {
+    "insertId": "69b3d22100051f91d3039db0",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-13T09:00:17.342636550Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "  clientVersion: '6.2.1',",
+    "timestamp": "2026-03-13T09:00:17.335761Z"
+  },
+  {
+    "insertId": "69b3d22100051f8b2bb7e9ec",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-13T09:00:17.342636550Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "  code: 'P2028',",
+    "timestamp": "2026-03-13T09:00:17.335755Z"
+  },
+  {
+    "insertId": "69b3d22100051f861d5dc41e",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-13T09:00:17.342636550Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    at async updateLessonContent (file:///usr/src/app/dist/controllers/adminController.js:170:28) {",
+    "timestamp": "2026-03-13T09:00:17.335750Z"
+  },
+  {
+    "insertId": "69b3d22100051f81962d9742",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-13T09:00:17.342636550Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    at async Proxy._transactionWithCallback (/usr/src/app/node_modules/@prisma/client/runtime/library.js:130:7984)",
+    "timestamp": "2026-03-13T09:00:17.335745Z"
+  },
+  {
+    "insertId": "69b3d22100051f7b9718afa0",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-13T09:00:17.342636550Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    at async prisma.$transaction.timeout (file:///usr/src/app/dist/services/adminService.js:424:25)",
+    "timestamp": "2026-03-13T09:00:17.335739Z"
+  },
+  {
+    "insertId": "69b3d22100051f767d37bf7b",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-13T09:00:17.342636550Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    at async l (/usr/src/app/node_modules/@prisma/client/runtime/library.js:130:9617)",
+    "timestamp": "2026-03-13T09:00:17.335734Z"
+  },
+  {
+    "insertId": "69b3d22100051f71e7c0f501",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-13T09:00:17.342636550Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    at Vn.request (/usr/src/app/node_modules/@prisma/client/runtime/library.js:121:6370)",
+    "timestamp": "2026-03-13T09:00:17.335729Z"
+  },
+  {
+    "insertId": "69b3d22100051f6b7d73645e",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-13T09:00:17.342636550Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    at Vn.handleAndLogRequestError (/usr/src/app/node_modules/@prisma/client/runtime/library.js:121:6663)",
+    "timestamp": "2026-03-13T09:00:17.335723Z"
+  },
+  {
+    "insertId": "69b3d22100051f628d1bf561",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-13T09:00:17.342636550Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    at Vn.handleRequestError (/usr/src/app/node_modules/@prisma/client/runtime/library.js:121:7339)",
+    "timestamp": "2026-03-13T09:00:17.335714Z"
+  },
+  {
+    "insertId": "69b3d22100051f586ee648f7",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-13T09:00:17.342636550Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 120000 ms, however 120200 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.",
+    "timestamp": "2026-03-13T09:00:17.335704Z"
+  },
+  {
+    "insertId": "69b3d22100051f4b9653bcbc",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-13T09:00:17.342636550Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "Invalid `prisma.pYQ.update()` invocation:",
+    "timestamp": "2026-03-13T09:00:17.335691Z"
+  },
+  {
+    "insertId": "69b3d22100051f330fbb876d",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-13T09:00:17.342636550Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "[updateLessonContent] ERROR: PrismaClientKnownRequestError: ",
+    "timestamp": "2026-03-13T09:00:17.335667Z"
+  },
+  {
+    "httpRequest": {
+      "latency": "121.789555801s",
+      "protocol": "HTTP/1.1",
+      "referer": "https://mathinova-frontend-420478767625.us-central1.run.app/",
+      "remoteIp": "192.140.152.181",
+      "requestMethod": "PUT",
+      "requestSize": "6716814",
+      "requestUrl": "https://mathinova-backend-420478767625.us-central1.run.app/api/admin/lessons/347cd85e-5861-4962-9603-c8aa735d06d6/content",
+      "responseSize": "599",
+      "serverIp": "34.143.79.2",
+      "status": 400,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+    },
+    "insertId": "69b3d22100052a267a742f53",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-03-13T09:00:17.344393936Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "cc1bd43f0ff93833",
+    "timestamp": "2026-03-13T08:58:15.525761Z",
+    "trace": "projects/mathinova-staging/traces/8cf837a076f2e190b68009c985976b37"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.002869082s",
+      "protocol": "HTTP/1.1",
+      "referer": "https://mathinova-frontend-420478767625.us-central1.run.app/",
+      "remoteIp": "192.140.152.181",
+      "requestMethod": "OPTIONS",
+      "requestSize": "839",
+      "requestUrl": "https://mathinova-backend-420478767625.us-central1.run.app/api/admin/lessons/347cd85e-5861-4962-9603-c8aa735d06d6/content",
+      "responseSize": "244",
+      "serverIp": "34.143.79.2",
+      "status": 204,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+    },
+    "insertId": "69b3d1a4000b9e1b0d9262eb",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-03-13T08:58:12.778090885Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "db2d7a99ed33d764",
+    "timestamp": "2026-03-13T08:58:12.756356Z",
+    "trace": "projects/mathinova-staging/traces/3f4595b799c3a1c1b68009c9859763b5"
+  },
+  {
+    "httpRequest": {
+      "latency": "2.972444006s",
+      "protocol": "HTTP/1.1",
+      "referer": "https://mathinova-frontend-420478767625.us-central1.run.app/",
+      "remoteIp": "192.140.152.181",
+      "requestMethod": "POST",
+      "requestSize": "1447",
+      "requestUrl": "https://mathinova-backend-420478767625.us-central1.run.app/api/admin/lessons/347cd85e-5861-4962-9603-c8aa735d06d6/pyqs",
+      "responseSize": "829",
+      "serverIp": "34.143.79.2",
+      "status": 201,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+    },
+    "insertId": "69b3d1a200007081e19b917a",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-03-13T08:58:10.112330913Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "8abc09fa888a3b0a",
+    "timestamp": "2026-03-13T08:58:07.053939Z",
+    "trace": "projects/mathinova-staging/traces/0261ceef74b15f9eb68009c985976f54"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.003848051s",
+      "protocol": "HTTP/1.1",
+      "referer": "https://mathinova-frontend-420478767625.us-central1.run.app/",
+      "remoteIp": "192.140.152.181",
+      "requestMethod": "OPTIONS",
+      "requestSize": "852",
+      "requestUrl": "https://mathinova-backend-420478767625.us-central1.run.app/api/admin/lessons/347cd85e-5861-4962-9603-c8aa735d06d6/pyqs",
+      "responseSize": "244",
+      "serverIp": "34.143.79.2",
+      "status": 204,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+    },
+    "insertId": "69b3d19e000bdad1b0e30294",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-03-13T08:58:06.785316878Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "71c812c02007f4ca",
+    "timestamp": "2026-03-13T08:58:06.761881Z",
+    "trace": "projects/mathinova-staging/traces/8ac8e66182f4915ab68009c98597679a",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "4.746392204s",
+      "protocol": "HTTP/1.1",
+      "referer": "https://mathinova-frontend-420478767625.us-central1.run.app/",
+      "remoteIp": "192.140.152.181",
+      "requestMethod": "GET",
+      "requestSize": "1150",
+      "requestUrl": "https://mathinova-backend-420478767625.us-central1.run.app/api/admin/courses/12d474b4-db3d-4546-95cf-fde38f0b0f82",
+      "responseSize": "9457789",
+      "serverIp": "34.143.79.2",
+      "status": 200,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+    },
+    "insertId": "69b3d1510006c9da5e851d2e",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-03-13T08:56:49.760906951Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "bd509b3dd6d58cfc",
+    "timestamp": "2026-03-13T08:56:44.696282Z",
+    "trace": "projects/mathinova-staging/traces/e9fb794d2252ed62fb649b87c943f11e"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.002917628s",
+      "protocol": "HTTP/1.1",
+      "referer": "https://mathinova-frontend-420478767625.us-central1.run.app/",
+      "remoteIp": "192.140.152.181",
+      "requestMethod": "OPTIONS",
+      "requestSize": "817",
+      "requestUrl": "https://mathinova-backend-420478767625.us-central1.run.app/api/admin/courses/12d474b4-db3d-4546-95cf-fde38f0b0f82",
+      "responseSize": "244",
+      "serverIp": "34.143.79.2",
+      "status": 204,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+    },
+    "insertId": "69b3d14c00063588de1dcb47",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-03-13T08:56:44.429343256Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "3b58b378ee586ba8",
+    "timestamp": "2026-03-13T08:56:44.402231Z",
+    "trace": "projects/mathinova-staging/traces/47a1fb734ebe6e1cfb649b87c943f51a"
+  },
+  {
+    "httpRequest": {
+      "latency": "1.921278478s",
+      "protocol": "HTTP/1.1",
+      "referer": "https://mathinova-frontend-420478767625.us-central1.run.app/",
+      "remoteIp": "192.140.152.181",
+      "requestMethod": "GET",
+      "requestSize": "1166",
+      "requestUrl": "https://mathinova-backend-420478767625.us-central1.run.app/api/admin/branches",
+      "responseSize": "168",
+      "serverIp": "34.143.79.2",
+      "status": 304,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+    },
+    "insertId": "69b3d14e0004d7fa253384f5",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-03-13T08:56:46.432830381Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "47a31e752deceaad",
+    "timestamp": "2026-03-13T08:56:44.394195Z",
+    "trace": "projects/mathinova-staging/traces/72d2ede4e7aa63ecfb649b87c943fc43"
+  },
+  {
+    "httpRequest": {
+      "latency": "1.957205450s",
+      "protocol": "HTTP/1.1",
+      "referer": "https://mathinova-frontend-420478767625.us-central1.run.app/",
+      "remoteIp": "192.140.152.181",
+      "requestMethod": "GET",
+      "requestSize": "1114",
+      "requestUrl": "https://mathinova-backend-420478767625.us-central1.run.app/api/admin/branches",
+      "responseSize": "856",
+      "serverIp": "34.143.79.2",
+      "status": 200,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+    },
+    "insertId": "69b3d14a0000d28688881384",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-03-13T08:56:42.100571121Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "0bb186edbcd249d4",
+    "timestamp": "2026-03-13T08:56:40.092360Z",
+    "trace": "projects/mathinova-staging/traces/f3e5d535aaef5a50fb649b87c943f52f"
+  },
+  {
+    "httpRequest": {
+      "latency": "2.128152588s",
+      "protocol": "HTTP/1.1",
+      "referer": "https://mathinova-frontend-420478767625.us-central1.run.app/",
+      "remoteIp": "192.140.152.181",
+      "requestMethod": "GET",
+      "requestSize": "1113",
+      "requestUrl": "https://mathinova-backend-420478767625.us-central1.run.app/api/admin/courses",
+      "responseSize": "12644",
+      "serverIp": "34.143.79.2",
+      "status": 200,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+    },
+    "insertId": "69b3d14a000325170a6e6f68",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-03-13T08:56:42.431010828Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "251fd10862b3486c",
+    "timestamp": "2026-03-13T08:56:40.075738Z",
+    "trace": "projects/mathinova-staging/traces/f98af8ff174bebf4fb649b87c943f162"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.002691888s",
+      "protocol": "HTTP/1.1",
+      "referer": "https://mathinova-frontend-420478767625.us-central1.run.app/",
+      "remoteIp": "192.140.152.181",
+      "requestMethod": "OPTIONS",
+      "requestSize": "781",
+      "requestUrl": "https://mathinova-backend-420478767625.us-central1.run.app/api/admin/branches",
+      "responseSize": "244",
+      "serverIp": "34.143.79.2",
+      "status": 204,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+    },
+    "insertId": "69b3d147000c33c2feca2ec1",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-03-13T08:56:40.098876740Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "5c95ecec64fa3aa4",
+    "timestamp": "2026-03-13T08:56:39.795384Z",
+    "trace": "projects/mathinova-staging/traces/8029d2e753c19792fb649b87c943f2ce"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.002664168s",
+      "protocol": "HTTP/1.1",
+      "referer": "https://mathinova-frontend-420478767625.us-central1.run.app/",
+      "remoteIp": "192.140.152.181",
+      "requestMethod": "OPTIONS",
+      "requestSize": "781",
+      "requestUrl": "https://mathinova-backend-420478767625.us-central1.run.app/api/admin/courses",
+      "responseSize": "244",
+      "serverIp": "34.143.79.2",
+      "status": 204,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+    },
+    "insertId": "69b3d147000c19a959f79afd",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-03-13T08:56:40.098876740Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "ee4f20782057487a",
+    "timestamp": "2026-03-13T08:56:39.784509Z",
+    "trace": "projects/mathinova-staging/traces/ec162d190a8322c7fb649b87c943fba5"
+  },
+  {
+    "httpRequest": {
+      "latency": "1.282019558s",
+      "protocol": "HTTP/1.1",
+      "referer": "https://mathinova-frontend-420478767625.us-central1.run.app/",
+      "remoteIp": "192.140.152.181",
+      "requestMethod": "GET",
+      "requestSize": "1145",
+      "requestUrl": "https://mathinova-backend-420478767625.us-central1.run.app/api/admin/orders",
+      "responseSize": "407",
+      "serverIp": "34.143.79.2",
+      "status": 404,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+    },
+    "insertId": "69b3d14700049e04a6a2d927",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-03-13T08:56:39.431243682Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "spanId": "f07751753058e0a6",
+    "timestamp": "2026-03-13T08:56:38.014932Z",
+    "trace": "projects/mathinova-staging/traces/b46f307866b4dbb999f55bb5968144b4"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.003080553s",
+      "protocol": "HTTP/1.1",
+      "referer": "https://mathinova-frontend-420478767625.us-central1.run.app/",
+      "remoteIp": "192.140.152.181",
+      "requestMethod": "OPTIONS",
+      "requestSize": "779",
+      "requestUrl": "https://mathinova-backend-420478767625.us-central1.run.app/api/admin/orders",
+      "responseSize": "244",
+      "serverIp": "34.143.79.2",
+      "status": 204,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+    },
+    "insertId": "69b3d145000b14e34dc0d699",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-03-13T08:56:37.765636956Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "1448ea1ed99c249c",
+    "timestamp": "2026-03-13T08:56:37.720754Z",
+    "trace": "projects/mathinova-staging/traces/c48b1cfe432bd08b99f55bb596814059",
+    "traceSampled": true
+  },
+  {
+    "httpRequest": {
+      "latency": "6.383079117s",
+      "protocol": "HTTP/1.1",
+      "referer": "https://mathinova-frontend-420478767625.us-central1.run.app/",
+      "remoteIp": "192.140.152.181",
+      "requestMethod": "GET",
+      "requestSize": "1245",
+      "requestUrl": "https://mathinova-backend-420478767625.us-central1.run.app/api/admin/courses/12d474b4-db3d-4546-95cf-fde38f0b0f82",
+      "responseSize": "171",
+      "serverIp": "34.143.77.2",
+      "status": 304,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+    },
+    "insertId": "69b3d1470004944d011d3c5c",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-03-13T08:56:39.431243682Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "e5c68805fa18e858",
+    "timestamp": "2026-03-13T08:56:32.914722Z",
+    "trace": "projects/mathinova-staging/traces/21c06f3c7b3f6fedd970276aa9b3ff3d"
+  },
+  {
+    "httpRequest": {
+      "latency": "1.928388682s",
+      "protocol": "HTTP/1.1",
+      "referer": "https://mathinova-frontend-420478767625.us-central1.run.app/",
+      "remoteIp": "192.140.152.181",
+      "requestMethod": "GET",
+      "requestSize": "1206",
+      "requestUrl": "https://mathinova-backend-420478767625.us-central1.run.app/api/admin/branches",
+      "responseSize": "168",
+      "serverIp": "34.143.77.2",
+      "status": 304,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+    },
+    "insertId": "69b3d142000c94dc11859b61",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-03-13T08:56:35.102734911Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "897e19f310409383",
+    "timestamp": "2026-03-13T08:56:32.891756Z",
+    "trace": "projects/mathinova-staging/traces/019a0ff08e142faed970276aa9b3fd95"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.002411900s",
+      "protocol": "HTTP/1.1",
+      "referer": "https://mathinova-frontend-420478767625.us-central1.run.app/",
+      "remoteIp": "192.140.152.181",
+      "requestMethod": "OPTIONS",
+      "requestSize": "850",
+      "requestUrl": "https://mathinova-backend-420478767625.us-central1.run.app/api/admin/courses/12d474b4-db3d-4546-95cf-fde38f0b0f82",
+      "responseSize": "244",
+      "serverIp": "34.143.77.2",
+      "status": 204,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+    },
+    "insertId": "69b3d140000975277b839c00",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-03-13T08:56:32.771677614Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "6d7667b2be9ed6d2",
+    "timestamp": "2026-03-13T08:56:32.611607Z",
+    "trace": "projects/mathinova-staging/traces/aebea859975b0c3e4b48a9dd1237ca48"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.003052195s",
+      "protocol": "HTTP/1.1",
+      "referer": "https://mathinova-frontend-420478767625.us-central1.run.app/",
+      "remoteIp": "192.140.152.181",
+      "requestMethod": "OPTIONS",
+      "requestSize": "814",
+      "requestUrl": "https://mathinova-backend-420478767625.us-central1.run.app/api/admin/branches",
+      "responseSize": "244",
+      "serverIp": "34.143.77.2",
+      "status": 204,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+    },
+    "insertId": "69b3d140000946f212c256c4",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-03-13T08:56:32.771677614Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "f144e99f9e0fef27",
+    "timestamp": "2026-03-13T08:56:32.600794Z",
+    "trace": "projects/mathinova-staging/traces/7c22206b0e8836564b48a9dd1237c451"
+  },
+  {
+    "httpRequest": {
+      "latency": "1.120722218s",
+      "protocol": "HTTP/1.1",
+      "referer": "https://mathinova-frontend-420478767625.us-central1.run.app/",
+      "remoteIp": "192.140.152.181",
+      "requestMethod": "POST",
+      "requestSize": "945",
+      "requestUrl": "https://mathinova-backend-420478767625.us-central1.run.app/api/auth/login",
+      "responseSize": "611",
+      "serverIp": "34.143.79.2",
+      "status": 200,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+    },
+    "insertId": "69b3d141000372ea24794919",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-03-13T08:56:33.437666266Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "029cb4866e21a96c",
+    "timestamp": "2026-03-13T08:56:32.101433Z",
+    "trace": "projects/mathinova-staging/traces/8d199f265e7bc89199f55bb596814bf3"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.002572110s",
+      "protocol": "HTTP/1.1",
+      "referer": "https://mathinova-frontend-420478767625.us-central1.run.app/",
+      "remoteIp": "192.140.152.181",
+      "requestMethod": "OPTIONS",
+      "requestSize": "778",
+      "requestUrl": "https://mathinova-backend-420478767625.us-central1.run.app/api/auth/login",
+      "responseSize": "244",
+      "serverIp": "34.143.79.2",
+      "status": 204,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+    },
+    "insertId": "69b3d13f000c8e05a9cbfbd3",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-03-13T08:56:32.104896331Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "e07b204c8b30f7d9",
+    "timestamp": "2026-03-13T08:56:31.814102Z",
+    "trace": "projects/mathinova-staging/traces/deb82f56e5e0aac099f55bb596814d60"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.959851987s",
+      "protocol": "HTTP/1.1",
+      "referer": "https://mathinova-frontend-420478767625.us-central1.run.app/",
+      "remoteIp": "192.140.152.181",
+      "requestMethod": "GET",
+      "requestSize": "839",
+      "requestUrl": "https://mathinova-backend-420478767625.us-central1.run.app/api/courses/branches",
+      "responseSize": "856",
+      "serverIp": "34.143.79.2",
+      "status": 200,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+    },
+    "insertId": "69b3d13c000cd26ef03bf973",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-03-13T08:56:29.108718783Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "cad7f4d22fd183f8",
+    "timestamp": "2026-03-13T08:56:27.878760Z",
+    "trace": "projects/mathinova-staging/traces/6a34dbe5279fbd4871519bc2e490f7c3"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.972821229s",
+      "protocol": "HTTP/1.1",
+      "referer": "https://mathinova-frontend-420478767625.us-central1.run.app/",
+      "remoteIp": "192.140.152.181",
+      "requestMethod": "GET",
+      "requestSize": "830",
+      "requestUrl": "https://mathinova-backend-420478767625.us-central1.run.app/api/courses",
+      "responseSize": "12044",
+      "serverIp": "34.143.79.2",
+      "status": 200,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+    },
+    "insertId": "69b3d13b0008ca85cfae2c5b",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-03-13T08:56:27.774157018Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "eb5e98f062decaf8",
+    "timestamp": "2026-03-13T08:56:26.601591Z",
+    "trace": "projects/mathinova-staging/traces/c09273aac7799e0f239ab37891aa1d9b"
+  },
+  {
+    "httpRequest": {
+      "latency": "2.115568593s",
+      "protocol": "HTTP/1.1",
+      "referer": "https://mathinova-frontend-420478767625.us-central1.run.app/",
+      "remoteIp": "192.140.152.181",
+      "requestMethod": "GET",
+      "requestSize": "1206",
+      "requestUrl": "https://mathinova-backend-420478767625.us-central1.run.app/api/admin/branches",
+      "responseSize": "168",
+      "serverIp": "34.143.77.2",
+      "status": 304,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+    },
+    "insertId": "69b3d1390008115f24f7bb19",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-03-13T08:56:25.778043546Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "aba19abf18721dd6",
+    "timestamp": "2026-03-13T08:56:23.407784Z",
+    "trace": "projects/mathinova-staging/traces/a8d807f8e735203e4b48a9dd1237c8ff"
+  },
+  {
+    "httpRequest": {
+      "latency": "2.122487346s",
+      "protocol": "HTTP/1.1",
+      "referer": "https://mathinova-frontend-420478767625.us-central1.run.app/",
+      "remoteIp": "192.140.152.181",
+      "requestMethod": "GET",
+      "requestSize": "1205",
+      "requestUrl": "https://mathinova-backend-420478767625.us-central1.run.app/api/admin/courses",
+      "responseSize": "169",
+      "serverIp": "34.143.77.2",
+      "status": 304,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+    },
+    "insertId": "69b3d13900080c6980b65fca",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-03-13T08:56:25.778043546Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "7692bbec40d1ffd5",
+    "timestamp": "2026-03-13T08:56:23.402394Z",
+    "trace": "projects/mathinova-staging/traces/c7a38ccc37343f804b48a9dd1237cae4"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.004756612s",
+      "protocol": "HTTP/1.1",
+      "referer": "https://mathinova-frontend-420478767625.us-central1.run.app/",
+      "remoteIp": "192.140.152.181",
+      "requestMethod": "OPTIONS",
+      "requestSize": "828",
+      "requestUrl": "https://mathinova-backend-420478767625.us-central1.run.app/api/admin/branches",
+      "responseSize": "244",
+      "serverIp": "34.143.77.2",
+      "status": 204,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+    },
+    "insertId": "69b3d1370001b48e3181dfe2",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-03-13T08:56:23.446298493Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "2e4bdfba56d332a4",
+    "timestamp": "2026-03-13T08:56:23.098695Z",
+    "trace": "projects/mathinova-staging/traces/c6837e311823a6374b48a9dd1237cb96"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.003712790s",
+      "protocol": "HTTP/1.1",
+      "referer": "https://mathinova-frontend-420478767625.us-central1.run.app/",
+      "remoteIp": "192.140.152.181",
+      "requestMethod": "OPTIONS",
+      "requestSize": "828",
+      "requestUrl": "https://mathinova-backend-420478767625.us-central1.run.app/api/admin/courses",
+      "responseSize": "244",
+      "serverIp": "34.143.77.2",
+      "status": 204,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+    },
+    "insertId": "69b3d1370001a7840898e625",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Frequests",
+    "receiveTimestamp": "2026-03-13T08:56:23.114504465Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "spanId": "cf852556b44cd2eb",
+    "timestamp": "2026-03-13T08:56:23.098588Z",
+    "trace": "projects/mathinova-staging/traces/8ac57438ca34047e4b48a9dd1237c18d",
+    "traceSampled": true
+  },
+  {
+    "insertId": "69b3d1200003181456c5d008",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-13T08:56:00.542109217Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "}",
+    "timestamp": "2026-03-13T08:56:00.202772Z"
+  },
+  {
+    "insertId": "69b3d12000031811b121f545",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-13T08:56:00.542109217Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "  }",
+    "timestamp": "2026-03-13T08:56:00.202769Z"
+  },
+  {
+    "insertId": "69b3d1200003180e655a40b2",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-13T08:56:00.542109217Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    field_name: 'AuditLog_actorUserId_fkey (index)'",
+    "timestamp": "2026-03-13T08:56:00.202766Z"
+  },
+  {
+    "insertId": "69b3d1200003180a25b0972c",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-13T08:56:00.542109217Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "    modelName: 'AuditLog',",
+    "timestamp": "2026-03-13T08:56:00.202762Z"
+  },
+  {
+    "insertId": "69b3d1200003180686416884",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-13T08:56:00.542109217Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "  meta: {",
+    "timestamp": "2026-03-13T08:56:00.202758Z"
+  },
+  {
+    "insertId": "69b3d120000318029bcfe789",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-13T08:56:00.542109217Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "  clientVersion: '6.2.1',",
+    "timestamp": "2026-03-13T08:56:00.202754Z"
+  },
+  {
+    "insertId": "69b3d120000317ffd7c09ac1",
+    "labels": {
+      "instanceId": "00da6cd2c46700170843973ef66797bf94410232795e096a7e91b5c54393026925851e283da60f91d3a38b23634435661611576cebf5e926c50f7a287bb1ee1eb69c9f350970f225ab73156367155c"
+    },
+    "logName": "projects/mathinova-staging/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-03-13T08:56:00.542109217Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "mathinova-backend",
+        "location": "us-central1",
+        "project_id": "mathinova-staging",
+        "revision_name": "mathinova-backend-00064-wsl",
+        "service_name": "mathinova-backend"
+      },
+      "type": "cloud_run_revision"
+    },
+    "textPayload": "  code: 'P2003',",
+    "timestamp": "2026-03-13T08:56:00.202751Z"
+  }
+]

@@ -1,0 +1,16 @@
+﻿[dotenv@17.2.3] injecting env (0) from .env -- tip: ≡ƒöÉ encrypt with Dotenvx: https://dotenvx.com
+Source lesson PYQs: 66
+Existing copy lesson PYQs: 66
+Source total occurrences: 93
+Copy total occurrences: 93
+
+Source first 3 PYQs:
+  [497ad321-f13c-4947-a7e2-3e85d3c29b58] order:0 occs:1 "<p><strong>Working&nbsp;procedure</strong></p><p><strong>Reg"
+  [2b50bf1c-d695-45de-a276-38a3a0c75402] order:1 occs:1 "<p><strong>[Regula-Falsi&nbsp;Method]&nbsp;-&nbsp;[Model&nbs"
+  [fa65dfd8-1284-4b27-a6dd-d19c691f3e00] order:2 occs:1 "<p><strong>[Regula-Falsi&nbsp;Method]&nbsp;-&nbsp;[Model&nbs"
+
+Copy first 3 PYQs:
+  [c7845c32-f690-4432-8ac8-b5f2ab8e62a9] order:0 occs:1 "<p><strong>Working&nbsp;procedure</strong></p><p><strong>Reg"
+  [697cbafa-d0d5-4f34-97ab-bf9514ca9836] order:1 occs:1 "<p><strong>[Regula-Falsi&nbsp;Method]&nbsp;-&nbsp;[Model&nbs"
+  [3679f7c0-29e9-4ab3-aa62-acbd798908d3] order:2 occs:1 "<p><strong>[Regula-Falsi&nbsp;Method]&nbsp;-&nbsp;[Model&nbs"
+

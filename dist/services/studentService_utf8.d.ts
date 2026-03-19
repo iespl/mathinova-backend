@@ -23,7 +23,7 @@ export declare class StudentService {
             subjectType: string | null;
             courseCode: string | null;
             longDescription: string | null;
-            learningPoints: import("@prisma/client/runtime/library").JsonValue | null;
+            learningPoints: string[];
         };
     } & {
         id: string;
@@ -59,9 +59,9 @@ export declare class StudentService {
                 updatedAt: Date;
                 order: number;
                 isDeleted: boolean;
+                moduleId: string;
                 isWrapper: boolean;
                 completionRule: string;
-                moduleId: string;
             })[];
         } & {
             id: string;
@@ -88,7 +88,7 @@ export declare class StudentService {
         subjectType: string | null;
         courseCode: string | null;
         longDescription: string | null;
-        learningPoints: import("@prisma/client/runtime/library").JsonValue | null;
+        learningPoints: string[];
     }) | null>;
     static updateProgress(userId: string, lessonId: string, completed: boolean, lastWatchedPosition: number): Promise<{
         id: string;

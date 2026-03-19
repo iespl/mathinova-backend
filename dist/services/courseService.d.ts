@@ -19,7 +19,7 @@ export declare class CourseService {
         subjectType: string | null;
         courseCode: string | null;
         longDescription: string | null;
-        learningPoints: import("@prisma/client/runtime/library").JsonValue | null;
+        learningPoints: string[];
     }>;
     static getCourses(status?: EntityStatus): Promise<({
         _count: {
@@ -44,7 +44,7 @@ export declare class CourseService {
         subjectType: string | null;
         courseCode: string | null;
         longDescription: string | null;
-        learningPoints: import("@prisma/client/runtime/library").JsonValue | null;
+        learningPoints: string[];
     })[]>;
     static getCourseBySlug(slug: string): Promise<{
         _counts: {
@@ -81,6 +81,7 @@ export declare class CourseService {
                     order: number;
                     lessonId: string;
                     isPublished: boolean;
+                    isSample: boolean;
                     questionType: string;
                     questionText: string | null;
                     questionImages: import("@prisma/client/runtime/library").JsonValue | null;
@@ -97,9 +98,9 @@ export declare class CourseService {
                 updatedAt: Date;
                 order: number;
                 isDeleted: boolean;
+                moduleId: string;
                 isWrapper: boolean;
                 completionRule: string;
-                moduleId: string;
             })[];
         } & {
             id: string;
@@ -125,9 +126,63 @@ export declare class CourseService {
         subjectType: string | null;
         courseCode: string | null;
         longDescription: string | null;
-        learningPoints: import("@prisma/client/runtime/library").JsonValue | null;
+        learningPoints: string[];
     } | null>;
     static getPublicCourse(slugOrId: string): Promise<{
+        modules: {
+            lessons: {
+                videos: {
+                    videoUrl: string | null;
+                    id: string;
+                    title: string;
+                    order: number;
+                    lessonId: string;
+                    duration: number;
+                    isSample: boolean;
+                }[];
+                pyqs: {
+                    questionText: string | null;
+                    questionImages: import("@prisma/client/runtime/library").JsonValue;
+                    answerImages: import("@prisma/client/runtime/library").JsonValue;
+                    solutionVideoUrl: string | null;
+                    answerText: string | null;
+                    occurrences: {
+                        id: string;
+                        courseCode: string;
+                        year: number;
+                        pyqId: string;
+                        month: string;
+                        part: string | null;
+                    }[];
+                    id: string;
+                    description: string | null;
+                    createdAt: Date;
+                    order: number;
+                    lessonId: string;
+                    isPublished: boolean;
+                    isSample: boolean;
+                    questionType: string;
+                    difficulty: string | null;
+                    isSimilar: boolean;
+                }[];
+                quiz: {
+                    id: string;
+                } | null;
+                id: string;
+                title: string;
+                version: number;
+                updatedAt: Date;
+                order: number;
+                isDeleted: boolean;
+                moduleId: string;
+                isWrapper: boolean;
+                completionRule: string;
+            }[];
+            id: string;
+            title: string;
+            order: number;
+            courseId: string;
+        }[];
         _counts: {
             modules: number;
             lessons: number;
@@ -135,38 +190,6 @@ export declare class CourseService {
             quizzes: number;
             pyqs: number;
         };
-        modules: ({
-            lessons: ({
-                videos: {
-                    id: string;
-                    title: string;
-                    videoUrl: string;
-                    duration: number;
-                    isSample: boolean;
-                }[];
-                quiz: {
-                    id: string;
-                } | null;
-                pyqs: {
-                    id: string;
-                }[];
-            } & {
-                id: string;
-                title: string;
-                version: number;
-                updatedAt: Date;
-                order: number;
-                isDeleted: boolean;
-                isWrapper: boolean;
-                completionRule: string;
-                moduleId: string;
-            })[];
-        } & {
-            id: string;
-            title: string;
-            order: number;
-            courseId: string;
-        })[];
         id: string;
         title: string;
         slug: string;
@@ -185,7 +208,7 @@ export declare class CourseService {
         subjectType: string | null;
         courseCode: string | null;
         longDescription: string | null;
-        learningPoints: import("@prisma/client/runtime/library").JsonValue | null;
+        learningPoints: string[];
     } | null>;
     static getCourseById(id: string): Promise<{
         _counts: {
@@ -222,6 +245,7 @@ export declare class CourseService {
                     order: number;
                     lessonId: string;
                     isPublished: boolean;
+                    isSample: boolean;
                     questionType: string;
                     questionText: string | null;
                     questionImages: import("@prisma/client/runtime/library").JsonValue | null;
@@ -238,9 +262,9 @@ export declare class CourseService {
                 updatedAt: Date;
                 order: number;
                 isDeleted: boolean;
+                moduleId: string;
                 isWrapper: boolean;
                 completionRule: string;
-                moduleId: string;
             })[];
         } & {
             id: string;
@@ -266,7 +290,7 @@ export declare class CourseService {
         subjectType: string | null;
         courseCode: string | null;
         longDescription: string | null;
-        learningPoints: import("@prisma/client/runtime/library").JsonValue | null;
+        learningPoints: string[];
     } | null>;
     static updateCourse(id: string, data: any): Promise<{
         id: string;
@@ -287,7 +311,7 @@ export declare class CourseService {
         subjectType: string | null;
         courseCode: string | null;
         longDescription: string | null;
-        learningPoints: import("@prisma/client/runtime/library").JsonValue | null;
+        learningPoints: string[];
     }>;
     static addModule(courseId: string, title: string, order: number): Promise<{
         id: string;
@@ -302,9 +326,9 @@ export declare class CourseService {
         updatedAt: Date;
         order: number;
         isDeleted: boolean;
+        moduleId: string;
         isWrapper: boolean;
         completionRule: string;
-        moduleId: string;
     }>;
     static updateLesson(lessonId: string, data: any): Promise<{
         id: string;
@@ -313,9 +337,9 @@ export declare class CourseService {
         updatedAt: Date;
         order: number;
         isDeleted: boolean;
+        moduleId: string;
         isWrapper: boolean;
         completionRule: string;
-        moduleId: string;
     }>;
     static softDeleteLesson(lessonId: string): Promise<{
         id: string;
@@ -324,9 +348,9 @@ export declare class CourseService {
         updatedAt: Date;
         order: number;
         isDeleted: boolean;
+        moduleId: string;
         isWrapper: boolean;
         completionRule: string;
-        moduleId: string;
     }>;
     static getAllBranches(): Promise<{
         id: string;

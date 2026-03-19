@@ -1,4 +1,4 @@
-﻿import dotenv from 'dotenv';
+import dotenv from 'dotenv';
 dotenv.config();
 
 import express from 'express';
@@ -33,7 +33,7 @@ app.use('/api/support', supportRoutes);
 
 
 app.get('/health', (req, res) => {
-    res.json({ status: 'ok', timestamp: new Date().toISOString() });
+    res.json({ status: 'ok-cloning-ver-1.2', timestamp: new Date().toISOString() });
 });
 
 // Backend restart trigger

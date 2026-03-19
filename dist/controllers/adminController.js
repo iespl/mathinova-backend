@@ -107,6 +107,30 @@ export class AdminController {
             res.status(500).json({ message: error.message });
         }
     }
+    static async getCourseBasic(req, res) {
+        try {
+            const id = req.params.id;
+            const course = await AdminService.getCourseBasicOnly(id);
+            if (!course)
+                return res.status(404).json({ message: 'Course not found' });
+            res.json(course);
+        }
+        catch (error) {
+            res.status(500).json({ message: error.message });
+        }
+    }
+    static async getLessonDetails(req, res) {
+        try {
+            const id = req.params.id;
+            const lesson = await AdminService.getLessonDetails(id);
+            if (!lesson)
+                return res.status(404).json({ message: 'Lesson not found' });
+            res.json(lesson);
+        }
+        catch (error) {
+            res.status(500).json({ message: error.message });
+        }
+    }
     // --- Content ---
     static async addModule(req, res) {
         try {
@@ -165,12 +189,14 @@ export class AdminController {
     }
     static async updateLessonContent(req, res) {
         try {
+            const adminId = req.user.id;
             const id = req.params.id; // lessonId
             const { videos, pyqs, quiz } = req.body;
-            const result = await AdminService.updateLessonContent(id, videos, pyqs, quiz);
+            const result = await AdminService.updateLessonContent(adminId, id, videos, pyqs, quiz);
             res.json(result);
         }
         catch (error) {
+            console.error('[updateLessonContent] ERROR:', error);
             res.status(400).json({ message: error.message });
         }
     }
@@ -180,6 +206,67 @@ export class AdminController {
             const id = req.params.id; // lessonId
             await AdminService.deleteLesson(adminId, id);
             res.json({ message: 'Lesson deleted successfully' });
+        }
+        catch (error) {
+            res.status(400).json({ message: error.message });
+        }
+    }
+    static async cloneModule(req, res) {
+        try {
+            const adminId = req.user.id;
+            const id = req.params.id; // source moduleId
+            const { targetCourseId } = req.body;
+            if (!targetCourseId)
+                return res.status(400).json({ message: 'targetCourseId is required' });
+            const result = await AdminService.cloneModule(adminId, id, targetCourseId);
+            res.json({ message: 'Module cloned successfully', module: result });
+        }
+        catch (error) {
+            console.error('[AdminController.cloneModule] Error:', error);
+            res.status(400).json({ message: error.message });
+        }
+    }
+    static async cloneLesson(req, res) {
+        try {
+            const adminId = req.user.id;
+            const id = req.params.id; // source lessonId
+            const { targetModuleId } = req.body;
+            if (!targetModuleId)
+                return res.status(400).json({ message: 'targetModuleId is required' });
+            const result = await AdminService.cloneLesson(adminId, id, targetModuleId);
+            res.json({ message: 'Lesson cloned successfully', lesson: result });
+        }
+        catch (error) {
+            console.error('[AdminController.cloneLesson] Error:', error);
+            res.status(400).json({ message: error.message });
+        }
+    }
+    // --- PYQ Operations ---
+    static async createPYQ(req, res) {
+        try {
+            const lessonId = req.params.lessonId;
+            const pyq = await AdminService.createPYQ(lessonId, req.body);
+            res.status(201).json(pyq);
+        }
+        catch (error) {
+            res.status(400).json({ message: error.message });
+        }
+    }
+    static async updatePYQ(req, res) {
+        try {
+            const pyqId = req.params.id;
+            const pyq = await AdminService.updatePYQ(pyqId, req.body);
+            res.json(pyq);
+        }
+        catch (error) {
+            res.status(400).json({ message: error.message });
+        }
+    }
+    static async deletePYQ(req, res) {
+        try {
+            const pyqId = req.params.id;
+            await AdminService.deletePYQ(pyqId);
+            res.json({ message: 'PYQ deleted successfully' });
         }
         catch (error) {
             res.status(400).json({ message: error.message });

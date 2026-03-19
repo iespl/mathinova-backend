@@ -3,10 +3,10 @@ const prisma = new PrismaClient({
     log: ['query', 'info', 'warn', 'error']
 });
 async function main() {
-    console.log('🚀 Script started. Connecting to DB...');
+    console.log('ðŸš€ Script started. Connecting to DB...');
     try {
         await prisma.$connect();
-        console.log('✅ Connected to Database.');
+        console.log('âœ… Connected to Database.');
         console.log('Fetching all courses...');
         const courses = await prisma.course.findMany();
         const categories = ['Semester - I', 'Semester - II', 'Semester - III'];
@@ -19,18 +19,18 @@ async function main() {
                 where: { id: course.id },
                 data: { category: newCategory }
             });
-            console.log(`✅ Updated.`);
+            console.log(`âœ… Updated.`);
         }
         console.log('--- Alignment Complete ---');
     }
     catch (error) {
-        console.error('❌ Script Error:', error);
+        console.error('âŒ Script Error:', error);
         throw error;
     }
 }
 main()
     .catch((e) => {
-    console.error('❌ Main Error:', e);
+    console.error('âŒ Main Error:', e);
     process.exit(1);
 })
     .finally(async () => {

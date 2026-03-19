@@ -1,0 +1,17 @@
+import { PrismaClient } from '@prisma/client';
+const prisma = new PrismaClient();
+
+async function main() {
+  try {
+    const pyq = await prisma.pYQ.findFirst();
+    console.log('Sample PYQ found:', pyq ? 'Yes' : 'No');
+    if (pyq) {
+      console.log('isSample field present in object:', 'isSample' in pyq);
+      console.log('isSample value:', (pyq as any).isSample);
+    }
+  } catch (error: any) {
+    console.error('Schema check failed:', error.message);
+  }
+}
+
+main().catch(console.error).finally(() => prisma.$disconnect());
