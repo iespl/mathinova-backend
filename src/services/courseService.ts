@@ -81,64 +81,33 @@ export class CourseService {
     static async getPublicCourse(slugOrId: string) {
         const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(slugOrId);
 
+        // 1. Fetch Course
         const course = await prisma.course.findUnique({
             where: isUuid ? { id: slugOrId, status: EntityStatus.published } : { slug: slugOrId, status: EntityStatus.published },
-            // Switch to separate queries to avoid Cartesian product and improve performance for large courses
-            relationLoadStrategy: 'query', 
-            include: {
+            select: {
+                id: true,
+                slug: true,
+                title: true,
+                description: true,
+                basePrice: true,
+                currency: true,
+                status: true,
+                createdAt: true,
+                category: true,
+                level: true,
+                thumbnail: true,
+                pricingType: true,
+                promoVideoUrl: true,
+                validityDays: true,
+                branch: true,
+                subjectType: true,
+                courseCode: true,
+                longDescription: true,
+                learningPoints: true,
                 _count: {
                     select: {
                         modules: true,
                         enrollments: true
-                    }
-                },
-                modules: {
-                    orderBy: { order: 'asc' },
-                    include: {
-                        lessons: {
-                            where: { isDeleted: false },
-                            orderBy: { order: 'asc' },
-                            include: {
-                                _count: {
-                                    select: {
-                                        videos: true,
-                                        pyqs: true
-                                    }
-                                },
-                                videos: {
-                                    where: { isSample: true }, // Filter samples at the database level for public page
-                                    select: {
-                                        id: true,
-                                        title: true,
-                                        duration: true,
-                                        isSample: true,
-                                        videoUrl: true,
-                                        order: true
-                                    },
-                                    orderBy: { order: 'asc' }
-                                },
-                                quiz: {
-                                    select: {
-                                        id: true
-                                    }
-                                },
-                                pyqs: {
-                                    where: { isSample: true, isPublished: true }, // Filter samples at the database level
-                                    select: {
-                                        id: true,
-                                        isSample: true,
-                                        questionType: true,
-                                        questionText: true,
-                                        questionImages: true,
-                                        answerImages: true,
-                                        solutionVideoUrl: true,
-                                        answerText: true,
-                                        order: true
-                                    },
-                                    orderBy: { order: 'asc' }
-                                }
-                            }
-                        }
                     }
                 }
             }
@@ -146,32 +115,108 @@ export class CourseService {
 
         if (!course) return null;
 
-        // Calculate counts using pre-calculated aggregate fields
-        let totalLessons = 0;
-        let totalVideos = 0;
-        let totalQuizzes = 0;
-        let totalPYQs = 0;
+        const courseId = course.id;
+        const isFree = (course as any).pricingType === 'free';
 
-        course.modules.forEach(mod => {
-            totalLessons += mod.lessons.length;
-            mod.lessons.forEach(lesson => {
-                totalVideos += (lesson as any)._count.videos;
-                if (lesson.quiz) totalQuizzes++;
-                totalPYQs += (lesson as any)._count.pyqs;
+        // 2. Fetch Modules
+        const modules = await prisma.module.findMany({
+            where: { courseId },
+            orderBy: { order: 'asc' }
+        });
+
+        const moduleIds = modules.map(m => m.id);
+
+        // 3. Fetch Lessons
+        const allLessons = await prisma.lesson.findMany({
+            where: { moduleId: { in: moduleIds }, isDeleted: false },
+            orderBy: { order: 'asc' },
+            include: {
+                quiz: {
+                    select: { id: true }
+                }
+            }
+        });
+
+        const lessonIds = allLessons.map(l => l.id);
+
+        // 4. Fetch Videos
+        const allVideos = await prisma.video.findMany({
+            where: { lessonId: { in: lessonIds } },
+            orderBy: { order: 'asc' }
+        });
+
+        // 5. Fetch PYQs
+        const allPYQs = await prisma.pYQ.findMany({
+            where: { lessonId: { in: lessonIds }, isPublished: true },
+            orderBy: { order: 'asc' }
+        });
+
+        // Assemble data structures for fast lookups
+        const videosByLesson = new Map<string, any[]>();
+        allVideos.forEach(v => {
+            if (!videosByLesson.has(v.lessonId)) videosByLesson.set(v.lessonId, []);
+            if (!isFree && !v.isSample) {
+                (v as any).videoUrl = null;
+            }
+            videosByLesson.get(v.lessonId)!.push(v);
+        });
+
+        const pyqsByLesson = new Map<string, any[]>();
+        allPYQs.forEach(p => {
+            if (!pyqsByLesson.has(p.lessonId)) pyqsByLesson.set(p.lessonId, []);
+            if (!isFree && !p.isSample) {
+                (p as any).questionText = 'Unlock premium content to view this PYQ';
+                (p as any).questionImages = [];
+                (p as any).answerImages = [];
+                (p as any).solutionVideoUrl = null;
+                (p as any).answerText = null;
+            }
+            pyqsByLesson.get(p.lessonId)!.push(p);
+        });
+
+        const lessonsByModule = new Map<string, any[]>();
+        let totalVideos = 0;
+        let totalPYQs = 0;
+        let totalQuizzes = 0;
+
+        allLessons.forEach(l => {
+            if (!lessonsByModule.has(l.moduleId)) lessonsByModule.set(l.moduleId, []);
+            const videos = videosByLesson.get(l.id) || [];
+            const pyqs = pyqsByLesson.get(l.id) || [];
+            
+            totalVideos += videos.length;
+            totalPYQs += pyqs.length;
+            if (l.quiz) totalQuizzes++;
+
+            lessonsByModule.get(l.moduleId)!.push({
+                ...l,
+                videos,
+                pyqs,
+                _count: {
+                    videos: videos.length,
+                    pyqs: pyqs.length
+                }
             });
         });
 
+        const assembledModules = modules.map(m => ({
+            ...m,
+            lessons: lessonsByModule.get(m.id) || []
+        }));
+
         return {
             ...course,
+            modules: assembledModules,
             _counts: {
-                modules: course._count.modules,
-                lessons: totalLessons,
+                modules: (course as any)._count.modules,
+                lessons: allLessons.length,
                 videos: totalVideos,
                 quizzes: totalQuizzes,
                 pyqs: totalPYQs
             }
         };
     }
+
 
     static async getCourseById(id: string) {
         const course = await prisma.course.findUnique({

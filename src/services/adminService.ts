@@ -198,7 +198,7 @@ export class AdminService {
     static async getCourseById(courseId: string) {
         return prisma.course.findUnique({
             where: { id: courseId },
-            relationLoadStrategy: 'join',
+            relationLoadStrategy: 'query',
             include: {
                 modules: {
                     include: {
