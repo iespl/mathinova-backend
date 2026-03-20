@@ -10,6 +10,7 @@ router.use(authorize([Role.admin, Role.super_admin]));
 
 
 router.post('/refunds/:payment_id', AdminController.processRefund);
+router.get('/orders', AdminController.getAllOrders);
 
 // Users
 router.get('/users', AdminController.getUsers);
